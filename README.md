@@ -5,7 +5,7 @@
 </p>
 
 # Machine Learning
-Machine Learning projects in [Holberton School's](https://www.holbertonschool.com/) Specializations curriculum.
+Projects in [Holberton School's](https://www.holbertonschool.com/) Machine Learning specialization curriculum.
 
 ## Table of Contents
 * [About](#about)
