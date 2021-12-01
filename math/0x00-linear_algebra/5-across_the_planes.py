@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Defines `add_matrices2D`."""
-from itertools import zip_longest
 
 
 def add_matrices2D(mat1, mat2):
