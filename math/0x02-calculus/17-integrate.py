@@ -9,7 +9,7 @@ def poly_integral(poly, C=0):
     """
     if not poly or \
             type(poly) is not list or \
-            type(C) is not int or \
+            type(C) not in (int, float) or \
             not all([type(n) in (int, float) for n in poly]):
         return None
 
