@@ -3,5 +3,6 @@
 
 
 def summation_i_squared(n):
-    """Calculates the sum of squares of numbers from 1 to n."""
-    return sum(map(lambda i: i ** 2, range(1, n + 1)))
+    """Calculates the sum of squares of numbers from 1 to `n`."""
+    if isinstance(n, (int, float)):
+        return sum(map(lambda i: i ** 2, range(1, n + 1)))
