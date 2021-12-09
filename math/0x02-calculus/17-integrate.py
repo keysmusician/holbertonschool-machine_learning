@@ -12,8 +12,8 @@ def poly_integral(poly, C=0):
     try:
         poly = [n / (i + 1) for i, n in enumerate(poly)]
         poly = [C] + poly
-        poly = \
-            [int(n) if type(n) is float and n.is_integer() else n for n in poly]
+        poly = [int(n) if type(n) is float and n.is_integer() else n
+                for n in poly]
         return poly
     except TypeError:
         return None
