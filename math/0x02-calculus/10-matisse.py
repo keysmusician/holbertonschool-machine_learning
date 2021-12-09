@@ -8,7 +8,9 @@ def poly_derivative(poly):
     """
     if not poly:
         return None
-
-    derivative = [i * n for i, n in enumerate(poly)][1:]
-    if not derivative:
-        return [0]
+    try:
+        derivative = [i * n for i, n in enumerate(poly)][1:]
+        if not derivative:
+            return [0]
+    except TypeError:
+        return None
