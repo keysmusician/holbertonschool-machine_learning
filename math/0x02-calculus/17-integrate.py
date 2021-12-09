@@ -7,13 +7,14 @@ def poly_integral(poly, C=0):
     Calculates the indefinite integral of a polynomial from a list of its
     coefficients.
     """
-    if type(C) is not int:
+    if not poly or \
+            type(poly) is not list or \
+            not all([type(n) in (int, float) for n in poly]):
         return None
-    try:
-        poly = [n / (i + 1) for i, n in enumerate(poly)]
-        poly = [C] + poly
-        poly = [int(n) if type(n) is float and n.is_integer() else n
-                for n in poly]
-        return poly
-    except TypeError:
-        return None
+
+    poly = [n / (i + 1) for i, n in enumerate(poly)]
+    poly = [C] + poly
+    # Convert all whole number floats to integers
+    poly = [int(n) if type(n) is float and n.is_integer() else n
+            for n in poly]
+    return poly
