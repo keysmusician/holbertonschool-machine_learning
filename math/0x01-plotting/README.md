@@ -22,6 +22,8 @@ I learned how to plot data using **Pyplot** in this project.
 * `4-frequency.py`
 * `5-all_in_one.py`
 * `6-bars.py`
+* `100-gradient.py`
+* `101-pca.py`
 * `README.md`
 
 ## Author
