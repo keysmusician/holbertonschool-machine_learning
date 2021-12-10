@@ -17,7 +17,9 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 
 ## Projects
 ### Trimester 1:
-1. [0x00. Linear Algebra]()
+1. [0x00. Linear Algebra](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x00-linear_algebra)
+2. [0x01. Plotting](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x01-plotting)
+3. [0x02. Calculus](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x02-calculus)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
