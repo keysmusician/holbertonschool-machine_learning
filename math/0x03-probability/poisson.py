@@ -21,10 +21,7 @@ class Poisson:
             self.lambtha = sum(data) / len(data)
 
     def pmf(self, k):
-        """
-        Calculates the value of the probability mass function for a given
-        number of occurrences.
-        """
+        """The probability mass function."""
         def factorial(n):
             if n == 1 or n == 0:
                 return 1
@@ -38,10 +35,7 @@ class Poisson:
         return (self.lambtha ** k * self.e ** -self.lambtha) / factorial(k)
 
     def cdf(self, k):
-        """
-        Calculates the value of the cumulative distribution function for a
-        given number of occurrences.
-        """
+        """The cumulative distribution function."""
         k = int(k)
         if k <= 0:
             return 0
