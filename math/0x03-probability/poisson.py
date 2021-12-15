@@ -5,7 +5,6 @@
 class Poisson:
     """A Poisson distribution."""
 
-
     e = 2.7182818285
 
     def __init__(self, data=None, lambtha=1.):
@@ -23,8 +22,8 @@ class Poisson:
 
     def pmf(self, k):
         """
-        Calculates the value of the probability mass function for a given number
-        of occurences.
+        Calculates the value of the probability mass function for a given
+        number of occurrences.
         """
         def factorial(n):
             if n == 1 or n == 0:
@@ -33,10 +32,23 @@ class Poisson:
                 return n * factorial(n-1)
 
         k = int(k)
-        if k <= 0:
+        if k < 0:
             return 0
 
         return (self.lambtha ** k * self.e ** -self.lambtha) / factorial(k)
 
+    def cdf(self, k):
+        """
+        Calculates the value of the cumulative distribution function for a
+        given number of occurrences.
+        """
+        k = int(k)
+        if k <= 0:
+            return 0
 
+        cdf = 0
+        while k >= 0:
+            cdf += self.pmf(k)
+            k -= 1
 
+        return cdf
