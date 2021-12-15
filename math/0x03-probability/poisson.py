@@ -5,6 +5,9 @@
 class Poisson:
     """A Poisson distribution."""
 
+
+    e = 2.7182818285
+
     def __init__(self, data=None, lambtha=1.):
         """Initializes a Poisson distribution."""
         if data is None:
@@ -17,3 +20,23 @@ class Poisson:
             elif len(data) < 2:
                 raise ValueError('data must contain multiple values')
             self.lambtha = sum(data) / len(data)
+
+    def pmf(self, k):
+        """
+        Calculates the value of the probability mass function for a given number
+        of occurences.
+        """
+        def factorial(n):
+            if n == 1 or n == 0:
+                return 1
+            else:
+                return n * factorial(n-1)
+
+        k = int(k)
+        if k <= 0:
+            return 0
+
+        return (self.lambtha ** k * self.e ** -self.lambtha) / factorial(k)
+
+
+
