@@ -5,6 +5,10 @@
 class Normal:
     """A normal distribution."""
 
+    e = 2.7182818285
+    pi = 3.1415926536
+    tau = 2 * pi
+
     def __init__(self, data=None, mean=0., stddev=1.):
         """Initializes a normal distribution."""
         if data is None:
@@ -23,9 +27,13 @@ class Normal:
             self.stddev = variance ** .5
 
     def z_score(self, x):
-        """Calculates the z-score of `x`."""
         return (x - self.mean) / self.stddev
 
     def x_value(self, z):
         """Calculates the x-value of a z-score."""
         return z * self.stddev + self.mean
+
+    def pdf(self, x):
+        """The probability density function."""
+        exponent = self.z_score(x) ** 2 / 2
+        return 1 / (self.stddev * self.tau ** .5 * self.e ** exponent)
