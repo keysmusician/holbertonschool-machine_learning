@@ -27,7 +27,7 @@ class Binomial:
             variance = sum([(x - mean) ** 2 for x in data]) / len(data)
             p = 1 - (variance / mean)
             self.n = round(mean / p)
-            self.p = mean / self.n
+            self.p = float(mean / self.n)
 
     def pmf(self, k):
         """The probability mass function."""
