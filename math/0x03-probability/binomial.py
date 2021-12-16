@@ -23,12 +23,19 @@ class Binomial:
                 raise TypeError('data must be a list')
             elif len(data) < 2:
                 raise ValueError('data must contain multiple values')
-            mu = sum(data) / len(data)
-            self.p = mu / max(data)
-            self.n = mu / self.p
+            mean = sum(data) / len(data)
+            variance = sum((n - mean) ** 2)
+            variance /= len(data)
+            p = 1 - (variance / mean)
+            self.n = round(mean / p)
+            self.p = mean / self.n
 
     def pmf(self, k):
         """The probability mass function."""
+        k = int(k)
+        if k < 0 or k > self.n:
+            return 0
+
         n_choose_k = self.factorial(self.n) \
             / (self.factorial(k) * self.factorial(self.n - k))
 
@@ -43,4 +50,8 @@ class Binomial:
 
     def cdf(self, k):
         """The cumulative distribution function."""
+        k = int(k)
+        if k < 0 or k > self.n:
+            return 0
+
         return sum([self.pmf(n) for n in range(k + 1)])
