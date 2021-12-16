@@ -12,9 +12,9 @@ class Binomial:
     def __init__(self, data=None, n=1, p=0.5):
         """Initializes a binomial distribution."""
         if data is None:
-            if n < 0:
+            if n <= 0:
                 raise ValueError('n must be a positive value')
-            if p < 0 or p > 1:
+            if p <= 0 or p >= 1:
                 raise ValueError('p must be greater than 0 and less than 1')
             self.n = int(n)
             self.p = float(p)
@@ -27,7 +27,7 @@ class Binomial:
             variance = sum([(x - mean) ** 2 for x in data]) / len(data)
             p = 1 - (variance / mean)
             self.n = round(mean / p)
-            self.p = float(mean / self.n)
+            self.p = mean / self.n
 
     def pmf(self, k):
         """The probability mass function."""
