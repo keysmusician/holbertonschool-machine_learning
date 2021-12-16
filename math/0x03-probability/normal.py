@@ -56,4 +56,3 @@ class Normal:
         """The cumulative distribution function."""
         error_x = (x - self.mean) / (self.stddev * 2 ** .5)
         return (1 + self.erf(error_x)) / 2
-
