@@ -23,9 +23,9 @@ class Binomial:
                 raise TypeError('data must be a list')
             elif len(data) < 2:
                 raise ValueError('data must contain multiple values')
-            print(data)
-            self.p = sum(data) / len(data)
-            self.n = len(data)
+            mu = sum(data) / len(data)
+            self.p = mu / max(data)
+            self.n = mu / self.p
 
     def pmf(self, k):
         """The probability mass function."""
