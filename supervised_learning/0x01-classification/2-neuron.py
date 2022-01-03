@@ -7,6 +7,7 @@ def sigmoid(x):
     """The sigmoid function."""
     return 1 / (1 + np.e ** -x)
 
+
 class Neuron:
     """An artificial neuron."""
 
