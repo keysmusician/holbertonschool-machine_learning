@@ -25,4 +25,3 @@ class Neuron:
         self.b = 0
         # The output/prediction of the neuron:
         self.A = 0
-
