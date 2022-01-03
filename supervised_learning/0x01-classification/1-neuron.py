@@ -6,13 +6,6 @@ import numpy as np
 class Neuron:
     """An artificial neuron."""
 
-    @staticmethod
-    def sigmoid(x):
-        """The sigmoid function."""
-        1 / (1 + np.e ** -x)
-
-    activation_function = sigmoid
-
     def __init__(self, nx):
         """
         Initializes a neuron.
@@ -47,15 +40,3 @@ class Neuron:
     def b(self):
         """The bias of the Neuron."""
         return self.__b
-
-    def forward_prop(self, X):
-        """
-        Calculates the forward propagation of the Neuron.
-
-        Args:
-            X: The input vector.
-        """
-        # activation = activation_function(input_vector * weight_vector + bias)
-        self.__A = self.activation_function(np.dot(X, self.W) + self.b)
-
-        return self.__A
