@@ -119,9 +119,9 @@ class Neuron:
                 training example.
             alpha: The learning rate of the neural network.
         """
-        # The derivatives of the loss function (l), with respect to the linearly
-        # transformed inputs (Z) = dl_dZ; In logistic regression, it simplifies
-        # to A - Y.
+        # The derivatives of the loss function (l), with respect to the
+        # linearly transformed inputs (Z) = dl_dZ; In logistic regression,
+        # it simplifies to A - Y.
         dl_dZ = A - Y
         # The average (mean) derivatives of the loss function with respect to
         # each weight across the entire training dataset:
