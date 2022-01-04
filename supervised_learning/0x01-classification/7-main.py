@@ -14,7 +14,7 @@ X_dev = X_dev_3D.reshape((X_dev_3D.shape[0], -1)).T
 
 np.random.seed(0)
 neuron = Neuron(X_train.shape[0])
-A, cost = neuron.train(X_train, Y_train, iterations=1000)
+A, cost = neuron.train(X_train, Y_train, iterations=3000)
 accuracy = np.sum(A == Y_train) / Y_train.shape[1] * 100
 print("Train cost:", cost)
 print("Train accuracy: {}%".format(accuracy))
