@@ -29,8 +29,6 @@ class DeepNeuralNetwork:
             raise ValueError("nx must be a positive integer")
         if type(layers) is not list or not list:
             raise TypeError("layers must be a list of positive integers")
-        if any(type(element) is not int for element in layers):
-            raise TypeError("layers must be a list of positive integers")
 
         # A dictionary of all weights and biases in the deep neural network:
         W_and_B = dict()
@@ -38,6 +36,8 @@ class DeepNeuralNetwork:
         # initialization of weights:
         prev_neuron_count = layers[-1]
         for layer_number, neuron_count in enumerate(layers, 1):
+            if type(neuron_count) is not int:
+                raise TypeError("layers must be a list of positive integers")
             weight_key = f'W{layer_number}'
             bias_key = f'b{layer_number}'
             # He Normal initialization:
