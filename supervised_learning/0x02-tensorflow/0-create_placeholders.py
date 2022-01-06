@@ -10,5 +10,12 @@ def create_placeholders(nx, classes):
     Args:
         nx: The number of feature columns in our data.
         classes: The number of classes in our classifier.
+
+    Returns: A tuple of:
+        1) The placeholder for the input data to the neural network (x), and
+        2) The placeholder for the one-hot labels for the input data (y),
+        respectively
     """
-    return (x:=tf.placeholder(), y:=tf.placeholder)
+    x = tf.placeholder(name='x', dtype=tf.float32, shape=(None, nx))
+    y = tf.placeholder(name='y', dtype=tf.float32, shape=(None, classes))
+    return (x, y)
