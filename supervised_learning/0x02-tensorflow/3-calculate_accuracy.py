@@ -15,5 +15,6 @@ def calculate_accuracy(y, y_pred):
 
     Returns: A tensor containing the decimal accuracy of the prediction.
     """
+    # Not sure why tf.metrics.accuracy doesn't work:
     # return tf.metrics.accuracy(y, y_pred)[0]
-    return tf.math.reduce_mean(tf.cast(tf.math.equal(y, y_pred), tf.float32))
+    return tf.math.reduce_mean(tf.tensordot(y, y_pred, 1))
