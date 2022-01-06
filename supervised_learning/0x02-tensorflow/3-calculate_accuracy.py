@@ -17,4 +17,4 @@ def calculate_accuracy(y, y_pred):
     """
     # Not sure why tf.metrics.accuracy doesn't work:
     # return tf.metrics.accuracy(y, y_pred)[0]
-    return tf.math.reduce_mean(tf.tensordot(y, y_pred, 1))
+    return tf.math.reduce_mean(tf.reduce_sum(tf.multiply(y, y_pred), 1))
