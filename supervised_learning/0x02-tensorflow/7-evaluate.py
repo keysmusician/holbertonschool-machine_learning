@@ -16,8 +16,8 @@ def evaluate(X, Y, save_path):
     """
 
     with tf.Session() as session:
-        loader = tf.train.import_meta_graph(save_path + '.meta')
-        loader.restore(session, save_path)
+        saver = tf.train.import_meta_graph(save_path + '.meta')
+        saver.restore(session, save_path)
         x, y, y_pred, loss, accuracy, train = tf.get_collection("model")
         routine = (y_pred, accuracy, loss)
         return session.run(routine, {x: X, y: Y})
