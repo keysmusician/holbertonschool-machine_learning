@@ -51,7 +51,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
         validation_accuracy, validation_cost = session.run(
             metrics, validation_data)
 
-        if iteration % 100 == 0:
+        if iteration % 100 == 0 or iteration == iterations:
             print(f'After {iteration} iterations:')
             print(f'\tTraining Cost: {training_cost}')
             print(f'\tTraining Accuracy: {training_accuracy}')
