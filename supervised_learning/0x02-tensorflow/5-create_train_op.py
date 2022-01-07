@@ -14,5 +14,5 @@ def create_train_op(loss, alpha):
     Returns: An operation that trains the network using gradient descent.
     """
     optimizer = tf.train.GradientDescentOptimizer(alpha)
-    train = optimizer.minimize(loss)
-    return train
+    return optimizer.minimize(loss)
+
