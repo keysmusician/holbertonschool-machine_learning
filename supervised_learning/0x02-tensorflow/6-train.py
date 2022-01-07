@@ -65,7 +65,7 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
     print(f'\tValidation Cost: {validation_cost}')
     print(f'\tValidation Accuracy: {validation_accuracy}')
 
-    saver.save(session, save_path)
+    path = saver.save(session, save_path)
     session.close()
 
-    return save_path
+    return path
