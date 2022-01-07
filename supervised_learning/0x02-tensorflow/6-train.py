@@ -35,27 +35,32 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
     loss = calculate_loss(y, y_pred)
     accuracy = calculate_accuracy(y, y_pred)
     train = create_train_op(loss, alpha)
+
+    for item in (x, y, y_pred, loss, accuracy, train):
+        tf.add_to_collection("model", item)
+
     training_data = {x: X_train, y: Y_train}
     validation_data = {x: X_valid, y: Y_valid}
     saver = tf.train.Saver()
-    with tf.Session() as session:
-        session.run(tf.global_variables_initializer())
-        metrics = (accuracy, loss)
-        for iteration in range(iterations + 1):
-            training_accuracy, training_cost = session.run(
-                metrics, training_data)
-            validation_accuracy, validation_cost = session.run(
-                metrics, validation_data)
+    session = tf.Session()
+    session.run(tf.global_variables_initializer())
+    metrics = (accuracy, loss)
+    for iteration in range(iterations + 1):
+        training_accuracy, training_cost = session.run(
+            metrics, training_data)
+        validation_accuracy, validation_cost = session.run(
+            metrics, validation_data)
 
-            if iteration % 100 == 0:
-                print(f'After {iteration} iterations:')
-                print(f'\tTraining Cost: {training_cost}')
-                print(f'\tTraining Accuracy: {training_accuracy}')
-                print(f'\tValidation Cost: {validation_cost}')
-                print(f'\tValidation Accuracy: {validation_accuracy}')
+        if iteration % 100 == 0:
+            print(f'After {iteration} iterations:')
+            print(f'\tTraining Cost: {training_cost}')
+            print(f'\tTraining Accuracy: {training_accuracy}')
+            print(f'\tValidation Cost: {validation_cost}')
+            print(f'\tValidation Accuracy: {validation_accuracy}')
 
-            session.run(train, training_data)
+        session.run(train, training_data)
 
-        saver.save(session, save_path)
+    saver.save(session, save_path)
+    session.close()
 
     return save_path
