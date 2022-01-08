@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Defines DeepNeuralNetwork"""
+"""Defines `DeepNeuralNetwork`."""
 import numpy as np
 
 
@@ -32,6 +32,7 @@ class DeepNeuralNetwork:
 
         # A dictionary of all weights and biases in the deep neural network:
         W_and_B = dict()
+
         # The number of neurons in the previous layer; Used for better random
         # initialization of weights:
         prev_neuron_count = layers[-1]
