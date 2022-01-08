@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Defines DeepNeuralNetwork"""
+"""Defines `DeepNeuralNetwork`."""
 import numpy as np
 
 
@@ -29,15 +29,16 @@ class DeepNeuralNetwork:
             raise ValueError("nx must be a positive integer")
         if type(layers) is not list or not list:
             raise TypeError("layers must be a list of positive integers")
-        if any(type(element) is not int for element in layers):
-            raise TypeError("layers must be a list of positive integers")
 
         # A dictionary of all weights and biases in the deep neural network:
         W_and_B = dict()
         # The number of neurons in the previous layer; Used for better random
         # initialization of weights:
         prev_neuron_count = layers[-1]
-        for layer_number, neuron_count in enumerate(layers, 1):
+        layer_number = 1
+        for neuron_count in layers:
+            if type(neuron_count) is not int:
+                raise TypeError("layers must be a list of positive integers")
             weight_key = f'W{layer_number}'
             bias_key = f'b{layer_number}'
             # He Normal initialization:
@@ -46,6 +47,7 @@ class DeepNeuralNetwork:
                 np.sqrt(2/prev_neuron_count)
             W_and_B[bias_key] = np.zeros((neuron_count, 1))
             prev_neuron_count = neuron_count
+            layer_number += 1
 
         self.weights = W_and_B
         self.L = len(layers)
