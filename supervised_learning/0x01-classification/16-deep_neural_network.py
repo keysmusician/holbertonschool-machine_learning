@@ -34,10 +34,10 @@ class DeepNeuralNetwork:
         W_and_B = {}
         # The number of neurons in the previous layer; Used for better random
         # initialization of weights:
-        prev_neuron_count = layers[-1]
+        prev_neuron_count = nx
         layer_number = 1
         for neuron_count in layers:
-            if type(neuron_count) is not int:
+            if type(neuron_count) is not int or neuron_count < 1:
                 raise TypeError("layers must be a list of positive integers")
             weight_key = 'W{}'.format(layer_number)
             bias_key = 'b{}'.format(layer_number)
