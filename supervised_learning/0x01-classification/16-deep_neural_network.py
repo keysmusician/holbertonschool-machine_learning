@@ -41,6 +41,7 @@ class DeepNeuralNetwork:
                 raise TypeError("layers must be a list of positive integers")
             weight_key = 'W{}'.format(layer_number)
             bias_key = 'b{}'.format(layer_number)
+
             # He Normal initialization:
             W_and_B[weight_key] = \
                 np.random.randn(neuron_count, prev_neuron_count) * \
