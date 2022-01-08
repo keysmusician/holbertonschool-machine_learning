@@ -50,5 +50,5 @@ class DeepNeuralNetwork:
             layer_number += 1
 
         self.weights = W_and_B
-        self.L = len(layers)
+        self.L = layer_number - 1
         self.cache = dict()
