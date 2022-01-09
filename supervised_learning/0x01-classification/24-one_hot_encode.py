@@ -16,5 +16,5 @@ def one_hot_encode(Y, classes):
     """
     if (type(classes) is int and
             classes >= 2 and
-            classes >= max(Y)):
+            classes > max(Y)):
         return np.identity(classes)[Y].T
