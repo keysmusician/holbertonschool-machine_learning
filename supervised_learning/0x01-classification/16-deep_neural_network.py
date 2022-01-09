@@ -46,11 +46,11 @@ class DeepNeuralNetwork:
             # He Normal initialization:
             W_and_B[weight_key] = \
                 np.random.randn(neuron_count, prev_neuron_count) * \
-                np.sqrt(2/prev_neuron_count)
+                np.sqrt(2 / prev_neuron_count)
 
             prev_neuron_count = neuron_count
             layer_number += 1
 
         self.weights = W_and_B
-        self.L = layer_number - 1
+        self.L = len(layers)
         self.cache = {}
