@@ -113,7 +113,6 @@ class DeepNeuralNetwork:
 
         Returns: The cost of the model.
         """
-        print("Y:", Y)
         # Using a value close to but not equal to 1 to prevent division by 0:
         _1 = 1.0000001
         log_loss = -(Y * np.log(A) + (1 - Y) * np.log(_1 - A))
