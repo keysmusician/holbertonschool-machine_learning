@@ -32,7 +32,7 @@ class DeepNeuralNetwork:
 
         # A dictionary of all weights and biases in the deep neural network:
         W_and_B = {}
-        # The number of neurons in the previous layer; Used for better random
+        # The number of neurons in the previous layer; Used to improve random
         # initialization of weights:
         prev_neuron_count = nx
         layer_number = 1
