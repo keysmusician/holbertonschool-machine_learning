@@ -42,11 +42,12 @@ class DeepNeuralNetwork:
             weight_key = 'W{}'.format(layer_number)
             bias_key = 'b{}'.format(layer_number)
 
+            W_and_B[bias_key] = np.zeros((neuron_count, 1))
             # He Normal initialization:
             W_and_B[weight_key] = \
                 np.random.randn(neuron_count, prev_neuron_count) * \
                 np.sqrt(2/prev_neuron_count)
-            W_and_B[bias_key] = np.zeros((neuron_count, 1))
+
             prev_neuron_count = neuron_count
             layer_number += 1
 
