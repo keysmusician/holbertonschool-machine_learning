@@ -14,7 +14,7 @@ def one_hot_encode(Y, classes):
     Returns: A one-hot encoding of Y with shape (classes, m), or None on
         failure.
     """
-    try:
+    if (type(classes) is int and
+            classes >= 2 and
+            classes >= max(Y)):
         return np.identity(classes)[Y].T
-    except IndexError:
-        return None
