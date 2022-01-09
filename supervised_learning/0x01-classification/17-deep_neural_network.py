@@ -46,11 +46,26 @@ class DeepNeuralNetwork:
             # He Normal initialization:
             W_and_B[weight_key] = \
                 np.random.randn(neuron_count, prev_neuron_count) * \
-                np.sqrt(2/prev_neuron_count)
+                np.sqrt(2 / prev_neuron_count)
 
             prev_neuron_count = neuron_count
             layer_number += 1
 
-        self.weights = W_and_B
-        self.L = layer_number - 1
-        self.cache = {}
+        self.__weights = W_and_B
+        self.__L = len(layers)
+        self.__cache = {}
+
+    @property
+    def L(self):
+        """The number of layers in the neural network."""
+        return self.__L
+
+    @property
+    def weights(self):
+        """The weights and biases of the neural network."""
+        return self.__weights
+
+    @property
+    def cache(self):
+        """A cache of intermediate values of the neural network."""
+        return self.__cache
