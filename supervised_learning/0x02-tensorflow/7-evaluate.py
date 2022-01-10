@@ -14,11 +14,12 @@ def evaluate(X, Y, save_path):
 
     Returns: the network's prediction, accuracy, and loss, respectively
     """
-
-    with tf.Session() as session:
-        saver = tf.train.import_meta_graph(save_path + '.meta')
-        saver.restore(session, save_path)
-        x, y, y_pred, loss, accuracy, train = tf.get_collection("model")
+    with tf.Session() as sess:
+        new_saver = tf.train.import_meta_graph(save_path + ".meta")
+        new_saver.restore(sess, save_path)
+        x, y, y_pred, accuracy, loss = [
+            tf.get_collection(var)[0] for var in
+            ('x', 'y', 'y_pred', 'accuracy', 'loss')
+        ]
         routine = (y_pred, accuracy, loss)
-        output = session.run(routine, {x: X, y: Y})
-    return output
+        return sess.run(routine, feed_dict={x: X, y: Y})
