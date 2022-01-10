@@ -9,26 +9,6 @@ def sigmoid(x):
     """The sigmoid function."""
     return 1 / (1 + np.exp(-x))
 
-def tanh(x):
-    """The hyperbolic tangent function."""
-    return (np.exp(x) - np.exp(-x)) / (np.exp(x) + np.exp(-x))
-
-def one_hot_encode(Y, classes):
-    """
-    Converts a numeric label vector into a one-hot matrix.
-
-    Args:
-        Y: The correct labels of the training data.
-        classes: The number of classes of the training data.
-
-    Returns: A one-hot encoding of Y with shape (classes, m), or None on
-        failure.
-    """
-    if (type(classes) is int and
-            classes >= 2 and
-            classes > max(Y)):
-        return np.identity(classes)[Y].T
-
 
 class DeepNeuralNetwork:
     """
@@ -95,7 +75,7 @@ class DeepNeuralNetwork:
     @property
     def activation_function(self):
         """The activation function used in the hidden layers."""
-        activation_functions = {'sig': sigmoid, 'tanh': tanh}
+        activation_functions = {'sig': sigmoid, 'tanh': np.tanh}
         return activation_functions[self.activation]
 
     @property
@@ -128,17 +108,20 @@ class DeepNeuralNetwork:
         for layer in range(1, self.L + 1):
             prev_layer_activation = activations['A{}'.format(layer - 1)]
 
-            activation = self.activation_function(
+            Z = (
                 self.weights['W{}'.format(layer)] @
                 prev_layer_activation +
                 self.weights['b{}'.format(layer)]
             )
-            activations['A{}'.format(layer)] = activation
 
-            # Make the output layer a softmax layer:
+            # Apply the softmax activation function to the output layer:
             if layer == self.L:
-                t = np.exp(activation)
-                activation = t / np.sum(t, axis=0, keepdims=True)
+                t = np.exp(Z)
+                activation = t / np.sum(t, axis=0)
+            else:
+                activation = self.activation_function(Z)
+
+            activations['A{}'.format(layer)] = activation
 
         self.__cache = activations
         return (activation, activations)
@@ -213,7 +196,7 @@ class DeepNeuralNetwork:
             if self.activation == 'sig':
                 dzl = A.T @ dzh * A_prev * (1 - A_prev)
             elif self.activation == 'tanh':
-                dzl = A.T @ dzh * ( 1 - np.square(A_prev))
+                dzl = A.T @ dzh * (1 - np.square(A_prev))
 
             # Bias of the current layer:
             b = self.weights['b{}'.format(layer)]
