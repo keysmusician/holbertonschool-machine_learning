@@ -15,5 +15,3 @@ def one_hot_decode(one_hot):
     """
     if type(one_hot) is np.ndarray and one_hot.ndim == 2:
         return np.argmax(one_hot, axis=0)
-
-

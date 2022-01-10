@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Defines `DeepNeuralNetwork`."""
-from os import stat
 import numpy as np
 import matplotlib.pyplot as plt
 import pickle

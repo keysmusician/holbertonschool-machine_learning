@@ -8,7 +8,7 @@ Deep28 = __import__('28-deep_neural_network').DeepNeuralNetwork
 one_hot_encode = __import__('24-one_hot_encode').one_hot_encode
 one_hot_decode = __import__('25-one_hot_decode').one_hot_decode
 
-lib= np.load('../data/MNIST.npz')
+lib = np.load('../data/MNIST.npz')
 X_train_3D = lib['X_train']
 Y_train = lib['Y_train']
 X_valid_3D = lib['X_valid']
@@ -53,7 +53,7 @@ print('\nTanh activaiton:')
 
 deep28 = Deep28.load('28-saved.pkl')
 A_one_hot28, cost28 = deep28.train(X_train, Y_train_one_hot, iterations=100,
-                                step=10, graph=False)
+                                   step=10, graph=False)
 A28 = one_hot_decode(A_one_hot28)
 accuracy28 = np.sum(Y_train == A28) / Y_train.shape[0] * 100
 print("Train cost:", cost28)
