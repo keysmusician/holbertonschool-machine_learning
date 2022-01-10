@@ -20,4 +20,5 @@ def evaluate(X, Y, save_path):
         saver.restore(session, save_path)
         x, y, y_pred, loss, accuracy, train = tf.get_collection("model")
         routine = (y_pred, accuracy, loss)
-        return session.run(routine, {x: X, y: Y})
+        output = session.run(routine, {x: X, y: Y})
+    return output
