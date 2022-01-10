@@ -107,7 +107,7 @@ class DeepNeuralNetwork:
         The cost of the neural network.
 
         The cost is the average loss across the training dataset. Uses the
-        cross-entropy loss function.
+        log-loss loss function.
 
         Args:
             Y: The correct labels of the training dataset.
