@@ -36,8 +36,13 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
     accuracy = calculate_accuracy(y, y_pred)
     train = create_train_op(loss, alpha)
 
-    for item in (x, y, y_pred, loss, accuracy, train):
-        tf.add_to_collection("model", item)
+    tf.add_to_collection('x', x)
+    tf.add_to_collection('y', y)
+    tf.add_to_collection('y_pred', y_pred)
+    tf.add_to_collection('loss', loss)
+    tf.add_to_collection('accuracy', accuracy)
+    tf.add_to_collection('train_op', train)
+
 
     training_data = {x: X_train, y: Y_train}
     validation_data = {x: X_valid, y: Y_valid}
