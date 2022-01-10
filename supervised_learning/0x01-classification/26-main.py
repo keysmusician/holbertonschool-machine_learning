@@ -12,8 +12,8 @@ X_train = X_train_3D.reshape((X_train_3D.shape[0], -1)).T
 
 np.random.seed(0)
 deep = Deep(X_train.shape[0], [3, 1])
-A, cost = deep.train(X_train, Y_train, iterations=100, graph=False)
-deep.save('26-output')
+A, cost = deep.train(X_train, Y_train, iterations=10, graph=False, step=10)
+deep.save('26-output.pkl')
 del deep
 
 saved = Deep.load('26-output.pkl')
