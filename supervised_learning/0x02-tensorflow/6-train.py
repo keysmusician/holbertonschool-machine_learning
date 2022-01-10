@@ -54,13 +54,16 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
                 training_accuracy = accuracy.eval(feed_dict=training_data)
                 validation_cost = loss.eval(feed_dict=validation_data)
                 validation_accuracy = accuracy.eval(feed_dict=validation_data)
+
                 print("After {} iterations:".format(iteration))
                 print("\tTraining Cost: {}".format(training_cost))
                 print("\tTraining Accuracy: {}".format(training_accuracy))
                 print("\tValidation Cost: {}".format(validation_cost))
                 print("\tValidation Accuracy: {}".format(validation_accuracy))
-            if iteration == iterations:
-                break
-            session.run(train, training_data)
+
+            # Don't train on the last iteration:
+            if iteration != iterations:
+                session.run(train, training_data)
+
         saver = tf.train.Saver()
         return saver.save(session, save_path)
