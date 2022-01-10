@@ -35,6 +35,8 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
     loss = calculate_loss(y, y_pred)
     accuracy = calculate_accuracy(y, y_pred)
     train = create_train_op(loss, alpha)
+    training_data = {x: X_train, y: Y_train}
+    validation_data = {x: X_valid, y: Y_valid}
 
     tf.add_to_collection('x', x)
     tf.add_to_collection('y', y)
@@ -43,24 +45,22 @@ def train(X_train, Y_train, X_valid, Y_valid, layer_sizes, activations, alpha,
     tf.add_to_collection('accuracy', accuracy)
     tf.add_to_collection('train_op', train)
 
-    sess = tf.Session()
-    init = tf.global_variables_initializer()
-    sess.run(init)
-
-    with sess.as_default():
-        for i in range(iterations + 1):
-            if i % 100 == 0 or i == 0 or i == iterations:
-                costt = loss.eval(feed_dict={x: X_train, y: Y_train})
-                acct = accuracy.eval(feed_dict={x: X_train, y: Y_train})
-                costv = loss.eval(feed_dict={x: X_valid, y: Y_valid})
-                accv = accuracy.eval(feed_dict={x: X_valid, y: Y_valid})
-                print("After {} iterations:".format(i))
-                print("\tTraining Cost: {}".format(costt))
-                print("\tTraining Accuracy: {}".format(acct))
-                print("\tValidation Cost: {}".format(costv))
-                print("\tValidation Accuracy: {}".format(accv))
-            if i == iterations:
+    session = tf.Session()
+    session.run(tf.global_variables_initializer())
+    with session.as_default():
+        for iteration in range(iterations + 1):
+            if iteration % 100 == 0 or iteration == iterations:
+                training_cost = loss.eval(feed_dict=training_data)
+                training_accuracy = accuracy.eval(feed_dict=training_data)
+                validation_cost = loss.eval(feed_dict=validation_data)
+                validation_accuracy = accuracy.eval(feed_dict=validation_data)
+                print("After {} iterations:".format(iteration))
+                print("\tTraining Cost: {}".format(training_cost))
+                print("\tTraining Accuracy: {}".format(training_accuracy))
+                print("\tValidation Cost: {}".format(validation_cost))
+                print("\tValidation Accuracy: {}".format(validation_accuracy))
+            if iteration == iterations:
                 break
-            sess.run(train, {x: X_train, y: Y_train})
+            session.run(train, training_data)
         saver = tf.train.Saver()
-        return saver.save(sess, save_path)
+        return saver.save(session, save_path)
