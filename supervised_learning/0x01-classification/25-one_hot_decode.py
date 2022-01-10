@@ -13,6 +13,7 @@ def one_hot_decode(one_hot):
     Returns: A decoding of `one_hot` with shape (classes, traing examples), or
         None on failure.
     """
-    if one_hot.ndim == 2:
+    if type(one_hot) is np.ndarray and one_hot.ndim == 2:
         return np.argmax(one_hot, axis=0)
+
 
