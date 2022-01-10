@@ -15,6 +15,7 @@ def one_hot_encode(Y, classes):
         failure.
     """
     if (type(classes) is int and
+            type(Y) is np.ndarray and
             classes >= 2 and
             classes > max(Y)):
         return np.identity(classes)[Y].T
