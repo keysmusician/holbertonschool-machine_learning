@@ -221,7 +221,8 @@ class DeepNeuralNetwork:
                     x.append(iteration)
                     y.append(cost)
                 if verbose:
-                    print(f"Cost after {iteration} iterations: {cost}")
+                    print('Cost after {} iterations: {}'
+                          .format(iteration, cost))
 
             self.gradient_descent(Y, self.cache, alpha)
 
