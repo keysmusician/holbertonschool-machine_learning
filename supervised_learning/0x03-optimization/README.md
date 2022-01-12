@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x02. Tensorflow
+# 0x03. Optimization
 
 ## Table of Contents
 * [About](#about)
@@ -12,17 +12,9 @@
 * [Author](#author)
 
 ## About
-In this project I started learning about **TensorFlow.** I learned how to design and execute **dataflow graphs**, and created a nerual network similar to the one I built in [0x01. Classification](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x01-classification).
+In this project I studied various algorithms for **optimizing** the process of training an artificial neural network.
 
 ## Files
-* `0-create_placeholders.py`
-* `1-create_layer.py`
-* `2-forward_prop.py`
-* `3-calculate_accuracy.py`
-* `4-calculate_loss.py`
-* `5-create_train_op.py`
-* `6-train.py`
-* `7-evaluate.py`
 * `README.md`
 
 ## Author
