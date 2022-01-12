@@ -16,6 +16,5 @@ def shuffle_data(X, Y):
 
     Returns: The shuffled X and Y matrices.
     """
-    if (X.shape[0] == Y.shape[0]):
-        random_order = np.random.permutation(X.shape[0])
-        return X[random_order], Y[random_order]
+    random_order = np.random.permutation(X.shape[0])
+    return X[random_order], Y[random_order]
