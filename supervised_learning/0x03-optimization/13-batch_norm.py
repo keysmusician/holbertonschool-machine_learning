@@ -21,7 +21,7 @@ def batch_norm(Z, gamma, beta, epsilon):
     """
     # Normalize Z
     mu = np.mean(Z, axis=0)
-    sigma = np.std(Z, axis=0)
-    Z_norm = (Z - mu) / (sigma + epsilon)
+    variance = np.var(Z, axis=0)
+    Z_norm = (Z - mu) / (variance + epsilon) ** .5
     # Parameterize the mean and standard deviation of Z
     return Z_norm * gamma + beta
