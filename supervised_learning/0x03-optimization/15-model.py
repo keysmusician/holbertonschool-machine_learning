@@ -94,12 +94,12 @@ def create_batch_norm_layer(prev, n, activation):
 
     mean, var = tf.nn.moments(new, axes=[0])
     beta = tf.Variable(tf.constant(0.0, shape=[n]), trainable=True,
-        name='beta')
+                       name='beta')
     gamma = tf.Variable(tf.constant(1.0, shape=[n]), trainable=True,
-        name='gamma')
+                        name='gamma')
     epsilon = 1e-8
     batch_normalization = tf.nn.batch_normalization(new, mean, var, beta,
-        gamma, epsilon)
+                                                    gamma, epsilon)
 
     return activation(batch_normalization)
 
