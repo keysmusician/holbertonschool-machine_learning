@@ -19,6 +19,6 @@ def specificity(confusion):
     for i in range(len(confusion)):
         mask = np.ones(confusion.shape, dtype=np.bool8)
         mask[i] = False
-        mask[:,i] = False
+        mask[:, i] = False
         true_negatives.append(np.sum(confusion[mask]))
     return true_negatives / (true_negatives + false_positives)
