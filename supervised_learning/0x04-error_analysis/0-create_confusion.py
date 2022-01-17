@@ -22,5 +22,5 @@ def create_confusion_matrix(labels, logits):
     label_indexes = np.argmax(labels, axis=1)
     logit_indexes = np.argmax(logits, axis=1)
     for lable_index, logit_index in zip(label_indexes, logit_indexes):
-        confusion[lable_index,logit_index] += 1
+        confusion[lable_index, logit_index] += 1
     return confusion
