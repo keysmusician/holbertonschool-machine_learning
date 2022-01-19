@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Defines `l2_reg_gradient_descent`."""
+import numpy as np
 
 
 def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
@@ -16,3 +17,15 @@ def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     lambtha: The L2 regularization parameter.
     L: The number of layers of the network.
     """
+    m = len(Y[0])
+    dz2 = cache["A" + str(L)] - Y
+    for layer in range(L, 0, -1):
+        A = cache["A" + str(layer - 1)]
+        W = weights["W" + str(layer)]
+        dz1 = W.T @ dz2 * (1 - A * A)
+        dw = dz2 @ A.T / m
+        dw += W * lambtha / m
+        db = np.mean(dz2, axis=1, keepdims=True)
+        dz2 = dz1
+        weights["W" + str(layer)] -= alpha * dw
+        weights["b" + str(layer)] -= alpha * db
