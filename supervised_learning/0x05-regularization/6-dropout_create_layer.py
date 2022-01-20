@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Defines `dropout_create_layer`."""
+import tensorflow.compat.v1 as tf
 
 
 def dropout_create_layer(prev, n, activation, keep_prob):
@@ -13,3 +14,6 @@ def dropout_create_layer(prev, n, activation, keep_prob):
 
     Returns: The output of the new layer.
     """
+    dense = tf.layers.Dense(n, activation)
+    dropout = tf.layers.Dropout(keep_prob)
+    return dropout(dense(prev))
