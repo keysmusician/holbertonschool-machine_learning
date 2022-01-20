@@ -12,7 +12,7 @@
 * [Author](#author)
 
 ## About
-I learned about **regularization** in this project.
+In this project, I learned how to implement **regularization** into my models.
 
 ## Files
 * `0-create_confusion.py`
