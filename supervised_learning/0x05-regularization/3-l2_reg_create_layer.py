@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Defines `l2_reg_create_layer`."""
+import tensorflow.compat.v1 as tf
 
 
 def l2_reg_create_layer(prev, n, activation, lambtha):
@@ -13,3 +14,5 @@ def l2_reg_create_layer(prev, n, activation, lambtha):
 
     Returns: The output of the new layer.
     """
+    L2 = tf.keras.regularizers.L2(lambtha)
+    return tf.keras.layers.Dense(n, activation, kernel_regularizer=L2)(prev)
