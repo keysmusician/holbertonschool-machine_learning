@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Defines `dropout_gradient_descent`."""
+import numpy as np
 
 
 def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
@@ -17,3 +18,16 @@ def dropout_gradient_descent(Y, weights, cache, alpha, keep_prob, L):
     keep_prob: The probability that a node will be kept.
     L: The number of layers of the network.
     """
+    m = len(Y[0])
+    dz2 = cache['A{}'.format(L)] - Y
+    for layer in range(L, 0, -1):
+        A = cache['A{}'.format(layer - 1)]
+        W = weights['W{}'.format(layer)]
+        dz1 = (W.T @ dz2) * (1 - (A * A))
+        if layer > 1:
+            dz1 *= cache['D{}'.format(layer - 1)] / keep_prob
+        dw = dz2 @ A.T / m
+        db = np.mean(dz2, axis=1, keepdims=True)
+        dz2 = dz1
+        weights['W{}'.format(layer)] -= alpha * dw
+        weights['b{}'.format(layer)] -= alpha * db
