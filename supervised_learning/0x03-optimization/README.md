@@ -17,12 +17,6 @@ In this project I studied various algorithms for **optimizing** the process of t
 ## Files
 * `0-norm_constants.py`
 * `1-normalize.py`
-* `10-Adam.py*`
-* `11-learning_rate_decay.py*`
-* `12-learning_rate_decay.py*`
-* `13-batch_norm.py*`
-* `14-batch_norm.py*`
-* `15-model.py*`
 * `2-shuffle_data.py*`
 * `3-mini_batch.py*`
 * `4-moving_average.py*`
@@ -31,6 +25,12 @@ In this project I studied various algorithms for **optimizing** the process of t
 * `7-RMSProp.py*`
 * `8-RMSProp.py*`
 * `9-Adam.py*`
+* `10-Adam.py*`
+* `11-learning_rate_decay.py*`
+* `12-learning_rate_decay.py*`
+* `13-batch_norm.py*`
+* `14-batch_norm.py*`
+* `15-model.py*`
 * `README.md`
 
 ## Author
