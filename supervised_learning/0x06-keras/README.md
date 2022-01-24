@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x03. Optimization
+# 0x05. Regularization
 
 ## Table of Contents
 * [About](#about)
@@ -12,25 +12,23 @@
 * [Author](#author)
 
 ## About
-In this project I studied various algorithms for **optimizing** the process of training an artificial neural network.
+In this project, I learned how to use **Keras**.
 
 ## Files
-* `0-norm_constants.py`
-* `1-normalize.py`
-* `10-Adam.py*`
-* `11-learning_rate_decay.py*`
-* `12-learning_rate_decay.py*`
-* `13-batch_norm.py*`
-* `14-batch_norm.py*`
-* `15-model.py*`
-* `2-shuffle_data.py*`
-* `3-mini_batch.py*`
-* `4-moving_average.py*`
-* `5-momentum.py*`
-* `6-momentum.py*`
-* `7-RMSProp.py*`
-* `8-RMSProp.py*`
-* `9-Adam.py*`
+* `0-sequential.py`
+* `1-input.py`
+* `2-optimize.py`
+* `3-one_hot.py`
+* `4-train.py`
+* `5-train.py`
+* `6-train.py`
+* `7-train.py`
+* `8-train.py`
+* `9-model.py`
+* `10-weights.py`
+* `11-config.py`
+* `12-test.py`
+* `13-predict.py`
 * `README.md`
 
 ## Author
