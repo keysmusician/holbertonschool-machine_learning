@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x05. Regularization
+# 0x06. Keras
 
 ## Table of Contents
 * [About](#about)
