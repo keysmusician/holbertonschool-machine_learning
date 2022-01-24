@@ -30,3 +30,4 @@ if __name__ == '__main__':
     with tf.Session() as sess:
         sess.run(tf.global_variables_initializer())
         print(sess.run(l2_cost, feed_dict={x: X_train, y: Y_train_oh}))
+        print(tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES))
