@@ -15,13 +15,14 @@
 In this project, I learned how to implement **regularization** into my models.
 
 ## Files
-* `0-create_confusion.py`
-* `1-sensitivity.py`
-* `2-precision.py`
-* `3-specificity.py`
-* `4-f1_score.py`
-* `5-error_handling`
-* `6-compare_and_contrast`
+* `0-l2_reg_cost.py`
+* `1-l2_reg_gradient_descent.py`
+* `2-l2_reg_cost.py`
+* `3-l2_reg_create_layer.py`
+* `4-dropout_forward_prop.py`
+* `5-dropout_gradient_descent.py`
+* `6-dropout_create_layer.py`
+* `7-early_stopping.py`
 * `README.md`
 
 ## Author
