@@ -10,7 +10,7 @@ def save_config(network, filename):
     filename: The path of the file that the configuration should be saved to.
     """
     json_network = network.to_json()
-    with open(filename, 'x') as json_file:
+    with open(filename, 'w') as json_file:
         json_file.write(json_network)
 
 
