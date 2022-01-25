@@ -19,6 +19,7 @@ def load_config(filename):
 
     filename: The path of the file containing the model's configuration in JSON
         format.
+
     Returns: The loaded model.
     """
     with open(filename, 'r') as json_file:
