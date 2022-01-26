@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x03. Probability
+# 0x04. Convolutions and Pooling
 
 ## Table of Contents
 * [About](#about)
@@ -12,14 +12,10 @@
 * [Author](#author)
 
 ## About
-This project tested my knowledge of **probability**.
+
 
 ## Files
-* `README.md`
-* `binomial.py`
-* `exponential.py`
-* `normal.py`
-* `poisson.py`
+
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
