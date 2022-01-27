@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Defines `convolve_grayscale_padding`"""
-from math import ceil, floor
 import numpy as np
 
 
@@ -17,34 +16,28 @@ def convolve_grayscale_padding(images, kernel, padding):
         convolution.
         - kh is the height of the kernel.
         - kw is the width of the kernel.
+ padding: A tuple (ph, pw) of padding to apply to both edges of each dimension.
+        - ph is the padding for the height of the image.
+        - pw is the padding for the width of the image.
 
     Returns: A numpy.ndarray containing the convolved images.
     """
-    kernel_width, kernel_height = kernel.shape
-    image_count, image_width, image_height = images.shape
-
-    pad_width = padding[0]
-    pad_height = padding[1]
-    padding = (
-        [0, 0],
-        [floor(pad_width / 2), ceil(pad_width / 2)],
-        [floor(pad_height / 2), ceil(pad_height / 2)]
-    )
-    padded_images = np.pad(images, padding)
+    kernel_height, kernel_width = kernel.shape
+    image_count, image_height, image_width = images.shape
+    pad_height, pad_width = padding
+    padding = (0, pad_height, pad_width)
+    padding = tuple(zip(padding, padding))
+    images = np.pad(images, padding)
 
     output_shape = (
         image_count,
-        image_width + pad_width - kernel_height + 1,
-        image_height + pad_height - kernel_width + 1
+        image_height + 2 * pad_height - kernel_height + 1,
+        image_width + 2 * pad_width - kernel_width + 1,
     )
     output = np.zeros(output_shape)
     for top in range(output_shape[1]):
         for left in range(output_shape[2]):
-            view = padded_images[
-                :,
-                top:top + kernel_height,
-                left:left + kernel_width
-            ]
+            view = images[:, top:top + kernel_height, left:left + kernel_width]
             output[:, top, left] = np.sum(view * kernel, axis=(1, 2))
 
     return output

@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Defines `convolve_grayscale_same`"""
-from math import ceil, floor
 import numpy as np
 
 
@@ -20,22 +19,19 @@ def convolve_grayscale_same(images, kernel):
 
     Returns: A numpy.ndarray containing the convolved images.
     """
-    kernel_width, kernel_height = kernel.shape
-    image_count, image_width, image_height = images.shape
+    kernel_height, kernel_width = kernel.shape
+    image_count, image_height, image_width = images.shape
 
-    pad_width = (kernel_width - 1) // 2
     pad_height = (kernel_height - 1) // 2
-    padding = (
-        [0, 0],
-        [floor(pad_width / 2), ceil(pad_width / 2)],
-        [floor(pad_height / 2), ceil(pad_height / 2)]
-    )
+    pad_width = (kernel_width - 1) // 2
+    padding = (0, pad_height, pad_width)
+    padding = tuple(zip(padding, padding))
     padded_images = np.pad(images, padding)
 
     output_shape = (
         image_count,
-        image_width + pad_width - kernel_height + 1,
-        image_height + pad_height - kernel_width + 1
+        image_height + 2 * pad_height - kernel_height + 1,
+        image_width + 2 * pad_width - kernel_width + 1,
     )
     output = np.zeros(output_shape)
     for top in range(output_shape[1]):
