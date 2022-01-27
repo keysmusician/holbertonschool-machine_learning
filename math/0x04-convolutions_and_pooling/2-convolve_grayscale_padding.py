@@ -16,7 +16,8 @@ def convolve_grayscale_padding(images, kernel, padding):
         convolution.
         - kh is the height of the kernel.
         - kw is the width of the kernel.
- padding: A tuple (ph, pw) of padding to apply to both edges of each dimension.
+    padding: A tuple (ph, pw) of padding to apply to both edges of each
+        dimension.
         - ph is the padding for the height of the image.
         - pw is the padding for the width of the image.
 
