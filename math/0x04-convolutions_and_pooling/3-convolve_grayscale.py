@@ -13,7 +13,7 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         - m is the number of images.
         - h is the height in pixels of the images.
         - w is the width in pixels of the images.
-    kernel: A numpy.ndarray with shape (kh, kw) containing the kernel for the
+    kernel: A numpy.ndarray with shape (kh, kw) containing the kernel of the
         convolution.
         - kh is the height of the kernel.
         - kw is the width of the kernel.
@@ -21,11 +21,11 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
         - If 'same', performs a same convolution
         - If 'valid', performs a valid convolution
         - If a tuple:
-            - ph is the padding for the height of the image.
-            - pw is the padding for the width of the image.
+            - ph is the padding on the height of the image.
+            - pw is the padding on the width of the image.
     stride: A tuple of (sh, sw).
-        - sh is the stride for the height of the image.
-        - sw is the stride for the width of the image.
+        - sh is the stride across the height of the image.
+        - sw is the stride across the width of the image.
 
     Returns: A numpy.ndarray containing the convolved images.
     """
