@@ -4,6 +4,7 @@ import numpy as np
 
 
 def ceil(a):
+    """Custom cieling function."""
     b = a // 1
     if a != b:
         return b + 1
