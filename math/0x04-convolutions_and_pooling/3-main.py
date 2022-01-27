@@ -19,3 +19,10 @@ if __name__ == '__main__':
     plt.show()
     plt.imshow(images_conv[0], cmap='gray')
     plt.show()
+
+
+    #Debug:
+    # for column in padded_images[0]:
+    #     for row in column:
+    #         print('x' if row else ' ', end=' ')
+    #     print()

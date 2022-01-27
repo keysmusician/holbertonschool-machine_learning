@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Defines `convolve_grayscale`"""
+from math import ceil
 import numpy as np
 
 
@@ -32,29 +33,30 @@ def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
     image_count, image_height, image_width = images.shape
     stride_height, stride_width = stride
 
-    if type(padding) is tuple and len(padding) == 2:
-        pad_height, pad_width = padding
-    elif padding == 'valid':
-        pad_width = pad_height = 0
-    elif padding == 'same':
-        pad_height = int(stride_height * (image_height - 1) - image_height
-            + kernel_height / 2)
-        pad_width = int(stride_width * (image_width - 1) - image_width +
-            kernel_width / 2)
-
-    pad_params = (0, pad_height, pad_width)
-    pad_params = tuple(zip(pad_params, pad_params))
-    padded_images = np.pad(images, pad_params)
-
     if padding == 'same':
+        pad_height = ceil((
+            stride_height * (image_height - 1) - image_height + kernel_height
+            ) / 2)
+        pad_width = ceil((
+            stride_width * (image_width - 1) - image_width + kernel_width) / 2)
+
         convolved_shape = images.shape
     else:
+        if type(padding) is tuple:
+            pad_height, pad_width = padding
+        elif padding == 'valid':
+            pad_width = pad_height = 0
+
         convolved_shape = (
             image_count,
             (image_height + 2 * pad_height - kernel_height)
             // stride_height + 1,
             (image_width + 2 * pad_width - kernel_width) // stride_width + 1,
         )
+
+    pad_params = (0, pad_height, pad_width)
+    pad_params = tuple(zip(pad_params, pad_params))
+    padded_images = np.pad(images, pad_params)
 
     # Matrix of convolved images, zero-initialized:
     convolved = np.zeros(convolved_shape)
