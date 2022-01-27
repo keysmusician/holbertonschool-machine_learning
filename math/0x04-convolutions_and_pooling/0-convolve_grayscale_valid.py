@@ -19,12 +19,12 @@ def convolve_grayscale_valid(images, kernel):
 
     Returns: A numpy.ndarray containing the convolved images.
     """
-    kernel_width, kernel_height = kernel.shape
-    image_count, image_width, image_height = images.shape
+    kernel_height, kernel_width = kernel.shape
+    image_count, image_height, image_width = images.shape
     output_shape = (
         image_count,
-        image_width - kernel_height + 1,
-        image_height - kernel_width + 1
+        image_height - kernel_height + 1,
+        image_width - kernel_width + 1
     )
     output = np.zeros(output_shape)
     for top in range(output_shape[1]):
