@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """Defines `convolve_grayscale`"""
-from math import ceil, floor
 import numpy as np
+
+
+def ceil(a):
+    b = a // 1
+    if a != b:
+        return b + 1
+    return a
 
 
 def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
@@ -35,9 +41,9 @@ def convolve_channels(images, kernel, padding='same', stride=(1, 1)):
 
     if padding == 'same':
         pad_height = ceil((stride_height * (image_height - 1) - image_height +
-            kernel_height) / 2)
+                           kernel_height) / 2)
         pad_width = ceil((stride_width * (image_width - 1) - image_width +
-            kernel_width) / 2)
+                          kernel_width) / 2)
 
         convolved_shape = images.shape
     else:
