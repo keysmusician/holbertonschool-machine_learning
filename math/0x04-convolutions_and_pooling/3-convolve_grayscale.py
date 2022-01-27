@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """Defines `convolve_grayscale`"""
-from math import ceil, floor
 import numpy as np
+
+
+def ceil(a):
+    b = a // 1
+    if a != b:
+        return b + 1
+    return a
 
 
 def convolve_grayscale(images, kernel, padding='same', stride=(1, 1)):
