@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Defines `convolve_grayscale`"""
-from math import ceil
+from math import ceil, floor
 import numpy as np
 
 
