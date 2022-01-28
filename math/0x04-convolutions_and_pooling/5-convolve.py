@@ -72,7 +72,10 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
             for k in range(kernel_count):
                 y = top * stride_height
                 x = left * stride_width
-                view = padded_images[:, y:y + kernel_height, x:x + kernel_width, :]
+                view = padded_images[:,
+                                     y:y + kernel_height,
+                                     x:x + kernel_width,
+                                     :]
                 kernel = kernels[:, :, :, k]
                 convolved[:, top, left, k] = np.sum(view * kernel,
                                                     axis=(1, 2, 3))
