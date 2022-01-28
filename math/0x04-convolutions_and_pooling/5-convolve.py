@@ -47,7 +47,8 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
         pad_width = ceil((stride_width * (image_width - 1) - image_width +
                           kernel_width) / 2)
 
-        convolved_shape = images.shape
+        convolved_shape = (
+            image_count, image_height, image_width, kernel_count)
     else:
         if type(padding) is tuple:
             pad_height, pad_width = padding
