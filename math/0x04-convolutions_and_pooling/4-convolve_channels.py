@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Defines `convolve_grayscale`"""
+"""Defines `convolve_channels`"""
 import numpy as np
 
 
