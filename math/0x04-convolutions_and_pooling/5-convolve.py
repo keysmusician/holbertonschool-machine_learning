@@ -7,8 +7,8 @@ def ceil(a):
     """Custom cieling function."""
     b = a // 1
     if a != b:
-        return b + 1
-    return a
+        return int(b + 1)
+    return int(a)
 
 
 def convolve(images, kernels, padding='same', stride=(1, 1)):
