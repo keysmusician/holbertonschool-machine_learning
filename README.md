@@ -27,6 +27,8 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 8. [0x04. Error Analysis](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x04-error_analysis)
 9. [0x05. Regularization](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x05-regularization)
 10. [0x06. Keras](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x06-keras)
+11. [0x04. Convolutions and Pooling](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x04-convolutions_and_pooling)
+12. [0x07. Convolutional Neural Networks](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x07-cnn)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
