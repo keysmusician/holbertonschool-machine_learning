@@ -41,12 +41,10 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
         padding_height = 0
         padding_width = 0
     elif padding == 'same':
-        padding_height = np.ceil(((input_height - 1) * vertical_stride -
-                                  input_height + filter_height) / 2,
-                                 dtype=np.int16)
-        padding_width = np.ceil(((input_width - 1) * horizontal_stride -
-                                 input_width + filter_width) / 2,
-                                dtype=np.int16)
+        padding_height = int(np.ceil(((input_height - 1) * vertical_stride -
+                                     input_height + filter_height) / 2))
+        padding_width = int(np.ceil(((input_width - 1) * horizontal_stride -
+                                    input_width + filter_width) / 2))
 
     cross_correlation_shape = (
         training_example_count,
@@ -56,16 +54,18 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
         + 1,
         filter_count
     )
+
+    padding_shape = (0, padding_height, padding_width, 0)
+    padding_shape = tuple(zip(padding_shape, padding_shape))
+    X = np.pad(A_prev, padding_shape)
     cross_correlation = np.zeros(cross_correlation_shape)
 
     for cross_correlation_y in range(cross_correlation_shape[1]):
         for cross_correlation_x in range(cross_correlation_shape[2]):
-
             height_offset = cross_correlation_y * vertical_stride
             width_offset = cross_correlation_x * horizontal_stride
 
-            # Slice the input (the activation matrix of the previous layer)
-            window = A_prev[
+            window = X[
                 :,
                 height_offset:height_offset + filter_height,
                 width_offset:width_offset + filter_width,
