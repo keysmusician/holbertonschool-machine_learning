@@ -34,45 +34,63 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     Returns: The partial derivatives with respect to the previous layer
         (dA_prev), the kernels (dW), and the biases (db), respectively.
     """
-    train_exmpl_count, input_height, input_width, input_depth = A_prev.shape
+    input_count, input_height, input_width, input_depth = A_prev.shape
     filter_height, filter_width, input_depth, output_depth = W.shape
-    train_exmpl_count, output_height, output_width, output_depth = dZ.shape
+    input_count, output_height, output_width, output_depth = dZ.shape
     vertical_stride, horizontal_stride = stride
 
     if padding == 'valid':
         padding_height, padding_width = 0, 0
     elif padding == 'same':
-        padding_height = np.ceil(((input_height - 1) * vertical_stride -
-                                  input_height + filter_height) / 2,
-                                 dtype=np.int16)
-        padding_width = np.ceil(((input_width - 1) * horizontal_stride -
-                                 input_width + filter_width) / 2,
-                                dtype=np.int16)
+        padding_height = int(np.ceil(((input_height - 1) * vertical_stride -
+                                     input_height + filter_height) / 2))
+        padding_width = int(np.ceil(((input_width - 1) * horizontal_stride -
+                                    input_width + filter_width) / 2))
 
-    dA_prev = np.zeros(A_prev.shape)
+    padding_shape = (0, padding_height, padding_width, 0)
+    padding_shape = tuple(zip(padding_shape))
+    A_pad = np.pad(A_prev, padding_shape)
+
+    dA = np.zeros(A_pad.shape)
     dW = np.zeros(W.shape)
     db = np.sum(dZ, axis=(0, 1, 2), keepdims=True)
-    print(db.shape)
 
-    for cross_correlation_y in range(filter_height):
-        for cross_correlation_x in range(filter_width):
+    # Normally I use full words for variable names, but i, h, w, and f do not
+    # represent an image, height, width, and filter, but rather *indicies* of
+    # them. Hence, I will use a single inital letter to signify an index:
+    for i in range(input_count):
+        for h in range(output_height):
+            for w in range(output_width):
+                for f in range(output_depth):
 
-            height_offset = cross_correlation_y * vertical_stride
-            width_offset = cross_correlation_x * horizontal_stride
+                    height_offset = h * vertical_stride
+                    width_offset = w * horizontal_stride
 
-            window = A_prev[
-                :,
-                height_offset:height_offset + output_height,
-                width_offset:width_offset + output_width,
-                :
-            ]
+                    filter = W[:, :, :, f]
+                    dz = dZ[i, h, w, f]
+                    window_X = A_pad[
+                        i,
+                        height_offset:height_offset + filter_height,
+                        width_offset:width_offset + filter_width,
+                        :
+                    ]
+                    # Selecting full height, width and depth for each filter
+                    dW[:, :, :, f] += window_X * dz
 
-            # np.sum(window * dZ, axis=(1, 2), keepdims=True)
-            dW[
-                :,
-                cross_correlation_y,
-                cross_correlation_x,
-                :
-            ] += np.tensordot(window, dZ, axes=(1, 2))
+                    dA[
+                        i,
+                        height_offset:height_offset + filter_height,
+                        width_offset:width_offset + filter_width,
+                        :
+                    ] += dz * filter
 
-    return dA_prev, dW, db
+    if padding == 'same':
+        # Strip off added padding
+        dA = dA[
+            :,
+            padding_height:-padding_height,
+            padding_width:-padding_width,
+            :
+        ]
+
+    return dA, dW, db
