@@ -29,11 +29,12 @@ def lenet5(x, y):
         - a tensor for the loss of the netowrk
         - a tensor for the accuracy of the network
     """
+    init = tf.keras.initializers.VarianceScaling(scale=2.0)
     x = tf.layers.Conv2D(
         6,
         5,
         activation=tf.nn.relu,
-        kernel_initializer=tf.keras.initializers.VarianceScaling(scale=2.0),
+        kernel_initializer=init,
         padding="same"
     )(x)
 
@@ -43,7 +44,7 @@ def lenet5(x, y):
         16,
         2,
         activation=tf.nn.relu,
-        kernel_initializer=tf.keras.initializers.VarianceScaling(scale=2.0),
+        kernel_initializer=init,
         padding="valid"
     )(x)
 
@@ -54,19 +55,19 @@ def lenet5(x, y):
     x = tf.layers.Dense(
         120,
         activation=tf.nn.relu,
-        kernel_initializer=tf.keras.initializers.VarianceScaling(scale=2.0)
+        kernel_initializer=init
     )(x)
 
     x = tf.layers.Dense(
         84,
         activation=tf.nn.relu,
-        kernel_initializer=tf.keras.initializers.VarianceScaling(scale=2.0)
+        kernel_initializer=init
     )(x)
 
     output = tf.layers.Dense(
         10,
         activation=tf.nn.softmax,
-        kernel_initializer=tf.keras.initializers.VarianceScaling(scale=2.0)
+        kernel_initializer=init
     )(x)
 
     loss = tf.losses.softmax_cross_entropy(y, output)
