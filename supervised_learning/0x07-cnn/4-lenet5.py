@@ -42,7 +42,7 @@ def lenet5(x, y):
 
     x = tf.layers.Conv2D(
         16,
-        2,
+        5,
         activation=tf.nn.relu,
         kernel_initializer=init,
         padding="valid"
