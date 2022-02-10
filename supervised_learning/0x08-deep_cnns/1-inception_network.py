@@ -28,21 +28,13 @@ def inception_network():
         padding='same'
     )(conv2d_1)
 
-    conv2d_reduce_1 = K.layers.Conv2D(
-        filters=64,
-        kernel_size=1,
-        activation='relu',
-        strides=1,
-        padding='same'
-    )(maxpool_1)
-
     conv2d_2 = K.layers.Conv2D(
         filters=192,
         kernel_size=3,
         activation='relu',
         strides=1,
         padding='same',
-    )(conv2d_reduce_1)
+    )(maxpool_1)
 
     maxpool_2 = K.layers.MaxPool2D(
         pool_size=3,
