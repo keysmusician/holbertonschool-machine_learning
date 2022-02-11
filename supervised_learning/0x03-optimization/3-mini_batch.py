@@ -70,8 +70,8 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
                 if step % 100 == 0:
                     s_cost, s_accuracy = session.run(metrics, mini_batch)
                     print("\tStep {}:".format(step))
-                    print("\t\tCost: {}:".format(s_cost))
-                    print("\t\tAccuracy: {}:".format(s_accuracy))
+                    print("\t\tCost: {}".format(s_cost))
+                    print("\t\tAccuracy: {}".format(s_accuracy))
 
                 if batch_end >= len(X_shuffled):
                     break
