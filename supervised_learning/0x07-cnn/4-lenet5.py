@@ -30,7 +30,7 @@ def lenet5(x, y):
         4) A tensor for the accuracy of the network.
     """
     init = tf.keras.initializers.VarianceScaling(scale=2.0)
-    x = tf.layers.Conv2D(
+    conv2d_1 = tf.layers.Conv2D(
         filters=6,
         kernel_size=5,
         activation=tf.nn.relu,
@@ -38,37 +38,37 @@ def lenet5(x, y):
         padding="same"
     )(x)
 
-    x = tf.layers.MaxPooling2D(2, 2)(x)
+    maxpool_1 = tf.layers.MaxPooling2D(2, 2)(conv2d_1)
 
-    x = tf.layers.Conv2D(
+    conv2d_2 = tf.layers.Conv2D(
         filters=16,
         kernel_size=5,
         activation=tf.nn.relu,
         kernel_initializer=init,
         padding="valid"
-    )(x)
+    )(maxpool_1)
 
-    x = tf.layers.MaxPooling2D(2, 2)(x)
+    maxpool_2 = tf.layers.MaxPooling2D(2, 2)(conv2d_2)
 
-    x = tf.layers.Flatten()(x)
+    flat_1 = tf.layers.Flatten()(maxpool_2)
 
-    x = tf.layers.Dense(
+    dense_1 = tf.layers.Dense(
         units=120,
         activation=tf.nn.relu,
         kernel_initializer=init
-    )(x)
+    )(flat_1)
 
-    x = tf.layers.Dense(
+    dense_2 = tf.layers.Dense(
         units=84,
         activation=tf.nn.relu,
         kernel_initializer=init
-    )(x)
+    )(dense_1)
 
     output = tf.layers.Dense(
         units=10,
         activation=tf.nn.softmax,
         kernel_initializer=init
-    )(x)
+    )(dense_2)
 
     loss = tf.losses.softmax_cross_entropy(y, output)
     train = tf.train.AdamOptimizer().minimize(loss)
