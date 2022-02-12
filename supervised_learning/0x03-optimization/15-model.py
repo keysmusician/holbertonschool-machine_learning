@@ -132,7 +132,7 @@ def model(Data_train, Data_valid, layers, activations, alpha=0.001, beta1=0.9,
     global_step = tf.Variable(0, name='global_step', trainable=False)
 
     # compute decay_steps
-    decay_step = X_train.shape[0] / batch_size
+    decay_step = len(X_train) / batch_size
 
     # create "alpha" the learning rate decay operation in tensorflow
     alpha = tf.train.inverse_time_decay(
