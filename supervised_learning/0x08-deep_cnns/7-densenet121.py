@@ -28,26 +28,26 @@ def densenet121(growth_rate=32, compression=1.0):
         kernel_initializer='he_normal'
     )(relu_0)
 
-    pool_0 = K.layers.MaxPooling2D(
+    maxpool = K.layers.MaxPooling2D(
         pool_size=3,
         strides=2,
         padding='same'
     )(conv_0)
 
-    block_0, n_filters = dense_block(pool_0, pool_0.shape[-1], growth_rate, 6)
-    transition_0, n_filters = transition_layer(block_0, n_filters, compression)
-    block_1, n_filters = dense_block(transition_0, n_filters, growth_rate, 12)
-    transition_1, n_filters = transition_layer(block_1, n_filters, compression)
-    block_2, n_filters = dense_block(transition_1, n_filters, growth_rate, 24)
-    transition_2, n_filters = transition_layer(block_2, n_filters, compression)
-    block_3, n_filters = dense_block(transition_2, n_filters, growth_rate, 16)
+    block_0, filter_count = dense_block(maxpool, maxpool.shape[-1], growth_rate, 6)
+    transition_0, filter_count = transition_layer(block_0, filter_count, compression)
+    block_1, filter_count = dense_block(transition_0, filter_count, growth_rate, 12)
+    transition_1, filter_count = transition_layer(block_1, filter_count, compression)
+    block_2, filter_count = dense_block(transition_1, filter_count, growth_rate, 24)
+    transition_2, filter_count = transition_layer(block_2, filter_count, compression)
+    block_3, filter_count = dense_block(transition_2, filter_count, growth_rate, 16)
 
-    pool_1 = K.layers.AveragePooling2D(pool_size=7)(block_3)
+    avgpool = K.layers.AveragePooling2D(pool_size=7)(block_3)
 
     output = K.layers.Dense(
         units=1000,
         activation='softmax',
         kernel_initializer='he_normal',
-    )(pool_1)
+    )(avgpool)
 
     return K.Model(input, output)
