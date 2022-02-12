@@ -22,12 +22,12 @@ def create_batch_norm_layer(prev, n, activation):
 
     mean, var = tf.nn.moments(new, axes=[0])
     beta = tf.Variable(tf.constant(0.0, shape=[n]), trainable=True,
-        name='beta')
+                       name='beta')
     gamma = tf.Variable(tf.constant(1.0, shape=[n]), trainable=True,
-        name='gamma')
+                        name='gamma')
     epsilon = 1e-8
     batch_normalization = tf.nn.batch_normalization(new, mean, var, beta,
-        gamma, epsilon)
+                                                    gamma, epsilon)
 
     return activation(batch_normalization)
 
@@ -44,7 +44,7 @@ def forward_prop(input, layers, activations, epsilon):
 
     Return: The ouput tensor of the graph.
     """
-    #init = tf.keras.initializers.VarianceScaling(mode='fan_avg')
+    # init = tf.keras.initializers.VarianceScaling(mode='fan_avg')
 
     # all layers get batch_normalization but the last one, that stays without
     # any activation or normalization
@@ -53,7 +53,7 @@ def forward_prop(input, layers, activations, epsilon):
         previous = create_batch_norm_layer(previous, neuron_count, activation)
 
     return tf.layers.Dense(
-        layers[-1], activations[-1])(previous) # init?
+        layers[-1], activations[-1])(previous)  # init?
 
 
 def shuffle_data(X, Y):
@@ -132,7 +132,7 @@ def model(Data_train, Data_valid, layers, activations, alpha=0.001, beta1=0.9,
     global_step = tf.Variable(0, name='global_step', trainable=False)
 
     # compute decay_steps
-    decay_step = X_train.shape[0] / batch_size
+    decay_step = len(X_train) / batch_size
 
     # create "alpha" the learning rate decay operation in tensorflow
     alpha = tf.train.inverse_time_decay(
