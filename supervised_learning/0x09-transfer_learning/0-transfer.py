@@ -20,38 +20,52 @@ def preprocess_data(X, Y):
 
 
 if __name__ == '__main__':
-    # Load the cifar10 dataset
-    train_data, test_data = K.datasets.cifar10.load_data()
-    data_shape = (32, 32, 3)
+    train_ds, test_ds = K.datasets.cifar10.load_data()
 
-    # Input layer
-    input_layer = K.layers.Input(shape=data_shape)
+    inputs = K.layers.Input(shape=(32, 32, 3))
 
-    # Create a layer to scale the input
-    image_size = (224, 224)
-    resize_layer = input_layer#K.layers.Lambda(
-    #    lambda x : K.preprocessing.image.smart_resize(x, image_size)
-    #)(input_layer)
+    lmbda = K.layers.Lambda(
+        lambda x : K.backend.resize_images(x, 150//32, 150//32, "channels_last")
+    )(inputs)
 
-    # Use ResNet101 as the base model
-    ResNet101 = K.applications.ResNet101(
+    base_model = K.applications.DenseNet121(
+        weights="imagenet",  # Load weights pre-trained on ImageNet.
+        input_shape=(128, 128, 3),
         include_top=False,
-        input_shape=data_shape,
-        input_tensor=resize_layer
-    )
+    )  # Do not include the ImageNet classifier at the top.
 
-    # Freeze the model so it does not train
-    ResNet101.trainable = False
-    resnet_base = ResNet101(resize_layer, training=False)
-    output_layer = K.layers.Dense(10)(resnet_base)
+    # Freeze the base_model
+    base_model.trainable = False
 
-    # Build new model
-    model = K.Model(input_layer, output_layer)
+    x = base_model(lmbda, training=False)
+    x = K.layers.Flatten()(x)
+    x = K.layers.Dense(32, 'relu')(x)
+    outputs = K.layers.Dense(10, 'softmax')(x)
+    model = K.Model(inputs, outputs)
+
+    model.summary()
 
     model.compile(
         optimizer=K.optimizers.Adam(),
-        loss=K.losses.CategoricalCrossentropy(from_logits=True),
-        metrics=[K.metrics.CategoricalAccuracy()]
+        loss=K.losses.SparseCategoricalCrossentropy(from_logits=True),
+        metrics=[K.metrics.SparseCategoricalAccuracy()],
     )
-    model.fit(train_data, epochs=4)
+
+    def learning_rate_schedule(epoch, lr):
+        if epoch < 7:
+            return lr
+        else:
+            return lr * 0.9
+
+    epochs = 10
+
+    model.fit(
+        train_ds[0],
+        train_ds[1],
+        batch_size=32,
+        epochs=epochs,
+        validation_data=test_ds,
+        callbacks=[K.callbacks.LearningRateScheduler(learning_rate_schedule)]
+    )
+
     model.save('cifar10.h5')
