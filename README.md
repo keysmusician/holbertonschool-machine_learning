@@ -32,6 +32,9 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 13. [0x08. Deep Convolutional Architectures](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x08-deep_cnns)
 14. [0x09. Transfer Learning](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x09-transfer_learning)
 
+### Trimester 2:
+15. 0x05. Advanced Linear Algebra
+
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
 <pre align="center">
