@@ -12,10 +12,18 @@
 * [Author](#author)
 
 ## About
-
+In this project, I learned how to perform covolution (cross-correlation) and
+pooling
 
 ## Files
-
+* `0-convolve_grayscale_valid.py`
+* `1-convolve_grayscale_same.py`
+* `2-convolve_grayscale_padding.py`
+* `3-convolve_grayscale.py`
+* `4-convolve_channels.py`
+* `5-convolve.py`
+* `6-pool.py`
+* `README.md`
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
