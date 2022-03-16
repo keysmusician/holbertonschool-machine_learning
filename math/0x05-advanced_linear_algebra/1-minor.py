@@ -55,19 +55,18 @@ def determinant(matrix):
 
 def minor(matrix):
     """ Calculates the minor matrix of a matrix. """
-    if not matrix or \
-            type(matrix) is not list or \
-            not all([type(element) is list for element in matrix]):
-        raise TypeError('matrix must be a list of lists')
-    elif matrix == [[]] or \
-            not all([len(el) == len(matrix[0]) for el in matrix]) or \
-            len(matrix) != len(matrix[0]):
-        raise ValueError('matrix must be a non-empty square matrix')
+    if type(matrix) is not list or len(matrix) == 0:
+        raise TypeError("matrix must be a list of lists")
+    for e in matrix:
+        if type(e) is not list:
+            raise TypeError("matrix must be a list of lists")
+        if len(e) != len(matrix):
+            raise ValueError("matrix must be a non-empty square matrix")
 
     result = []
     for row_number, row in enumerate(matrix):
         result.append([])
-        for column_number, _ in enumerate(row):
+        for column_number in range(len(row)):
             result[row_number].append(
                 determinant(omit(matrix, (row_number, column_number)))
             )
