@@ -4,12 +4,12 @@
 
 def omit(matrix, index):
     """ Omits a row and column from a square matrix. """
+    side_length = len(matrix)
     if type(index) is tuple and len(index) == 2:
         row, column = index
     elif type(index) is int:
         row = index // side_length
         column = index % side_length
-    side_length = len(matrix)
 
     decomp = list(matrix)
     del decomp[row]
