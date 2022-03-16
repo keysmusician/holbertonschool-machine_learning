@@ -105,13 +105,14 @@ def inverse(matrix):
 
     Returns: The inverse of `matrix`, or None if `matrix` is singular.
     """
+    adjugate_M = adjugate(matrix)
     determinant_ = determinant(matrix)
     if not determinant_:
         return
 
     result = []
 
-    for row_number, row in enumerate(adjugate(matrix)):
+    for row_number, row in enumerate(adjugate_M):
         result.append([])
         for element in row:
             result[row_number].append(element / determinant_)
