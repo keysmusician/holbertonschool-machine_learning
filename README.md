@@ -33,7 +33,7 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 14. [0x09. Transfer Learning](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x09-transfer_learning)
 
 ### Trimester 2:
-15. 0x05. Advanced Linear Algebra
+15. [0x05. Advanced Linear Algebra](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x05-advanced_linear_algebra)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
