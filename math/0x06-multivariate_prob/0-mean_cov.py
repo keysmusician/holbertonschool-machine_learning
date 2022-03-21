@@ -23,7 +23,7 @@ def mean_cov(X):
         raise ValueError('X must contain multiple data points')
 
     variable_count = X.shape[1]
-    covariance = np.ndarray((variable_count, variable_count))
+    covariance = np.zeros((variable_count, variable_count))
     means = np.mean(X, axis=0, keepdims=True)
     centered_variables = X - means
     for i in range(variable_count):
