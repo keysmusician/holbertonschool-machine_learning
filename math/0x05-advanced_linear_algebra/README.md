@@ -22,7 +22,12 @@ In this project, I learned about the following linear algebra concepts:
 - Definiteness
 
 ## Files
-
+* `0-determinant.py`
+* `1-minor.py`
+* `2-cofactor.py`
+* `3-adjugate.py`
+* `4-inverse.py`
+* `5-definiteness.py`
 * `README.md`
 
 ## Author
