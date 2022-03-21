@@ -22,13 +22,8 @@ def mean_cov(X):
     elif X.shape[0] < 2:
         raise ValueError('X must contain multiple data points')
 
-    variable_count = X.shape[1]
-    covariance = np.zeros((variable_count, variable_count))
+    sample_count = X.shape[0]
     means = np.mean(X, axis=0, keepdims=True)
-    centered_variables = X - means
-    for i in range(variable_count):
-        for j in range(variable_count):
-            covariance[i, j] = np.mean(
-                centered_variables[:, i] * centered_variables[:, j])
+    covariance = np.matmul(X.T - means.T, X - means) / (sample_count - 1)
 
     return (means, covariance)
