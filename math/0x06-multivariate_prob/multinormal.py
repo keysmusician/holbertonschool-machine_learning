@@ -34,8 +34,8 @@ class MultiNormal:
 
         Returns: The value of the PDF at a point.
         """
-        if type(x) != np.ndarray:
-            raise TypeError("x must be a numpy.ndarray")
+        if not type(x) is np.ndarray:
+            raise TypeError('x must be a numpy.ndarray')
         d = self.cov.shape[0]
         if len(x.shape) != 2:
             raise ValueError("x must have the shape ({}, 1)".format(d))
@@ -44,11 +44,13 @@ class MultiNormal:
             raise ValueError("x must have the shape ({}, 1)".format(d))
 
         tau = np.pi * 2
+        determinant = np.linalg.det(self.cov)
+        x_centered = x - self.mean
         probability_density = np.exp(
-                -1/2 *
-                (x - self.mean).T @
+                -0.5 *
+                x_centered.T @
                 np.linalg.inv(self.cov) @
-                (x - self.mean)
-            ) / np.sqrt(tau ** d * np.linalg.det(self.cov))
+                x_centered
+            ) / np.sqrt(tau ** d * determinant)
 
         return np.asscalar(probability_density)
