@@ -51,6 +51,6 @@ class MultiNormal:
                 x_centered.T @
                 np.linalg.inv(self.cov) @
                 x_centered
-            ) / np.sqrt(tau ** d * determinant)
+            ) * (1 / np.sqrt(tau ** d * determinant))
 
         return np.asscalar(probability_density)
