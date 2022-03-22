@@ -16,7 +16,10 @@ def correlation(C):
         raise TypeError('C must be a numpy.ndarray')
     elif len(C.shape) != 2:
         raise ValueError('C must be a 2D square matrix')
+    d0, d1 = C.shape
+    if d0 != d1:
+        raise ValueError("C must be a 2D square matrix")
 
-    root_variances =np.sqrt(np.diag(C))
+    root_variances = np.sqrt(np.diag(C))
 
     return C / np.outer(root_variances, root_variances)
