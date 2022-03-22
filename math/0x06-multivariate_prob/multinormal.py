@@ -14,12 +14,16 @@ class MultiNormal:
             d: The number of dimensions in each data point
             n: The number of data points
         """
-        if not type(data) is np.ndarray:
-            raise TypeError('data must be a 2D numpy.ndarray')
-        elif data.shape[0] < 2:
+        if type(data) != np.ndarray or len(data.shape) != 2:
+            raise TypeError("data must be a 2D numpy.ndarray")
+        elif data.shape[1] < 2:
             raise ValueError('data must contain multiple data points')
 
         sample_count = data.shape[1]
         self.mean = np.mean(data, axis=1, keepdims=True)
         mu = self.mean
         self.cov = np.matmul(data - mu, data.T - mu.T) / (sample_count - 1)
+
+
+        def pdf(self, x):
+            """"""
