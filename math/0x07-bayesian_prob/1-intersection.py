@@ -20,8 +20,8 @@ def intersection(x, n, P, Pr):
         developing severe side effects.
     Pr: A 1D numpy.ndarray containing the prior beliefs of P.
 
-    Returns: A 1D numpy.ndarray containing the likelihood of obtaining the
-        data, `x` and `n`, for each probability in `P`, respectively.
+    Returns: A 1D numpy.ndarray containing the intersection of obtaining the
+        data, `x` and `n`, with each probability in `P`, respectively.
     """
     if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
