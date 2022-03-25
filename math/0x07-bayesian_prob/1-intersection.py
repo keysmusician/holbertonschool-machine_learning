@@ -46,9 +46,8 @@ def intersection(x, n, P, Pr):
     n_choose_x = factorial(n) / (factorial(x) * factorial(n - x))
 
     likelihoods = np.ones_like(P)
-    for i, p_pr in enumerate(zip(P, Pr)):
+    for i, p in enumerate(P):
         # Binomial distribution:
-        p, pr = p_pr
-        likelihoods[i] *= n_choose_x * p ** x * (1 - p) ** (n - x) * pr
+        likelihoods[i] *= n_choose_x * p ** x * (1 - p) ** (n - x)
 
-    return likelihoods
+    return likelihoods * Pr
