@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Defines `initialize`. """
+""" Defines `kmeans`. """
 import numpy as np
 
 
@@ -24,8 +24,10 @@ def kmeans(X, k, iterations=1000):
     if not type(k) is int or \
             k <= 0 or \
             not type(X) is np.ndarray or \
-            len(X.shape) != 2:
-        return
+            len(X.shape) != 2 or \
+            type(iterations) is not int or \
+            iterations < 1:
+        return (None, None)
 
     n, d = X.shape
 
