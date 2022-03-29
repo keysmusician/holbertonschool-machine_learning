@@ -36,7 +36,7 @@ def kmeans(X, k, iterations=1000):
     cluster_labels = np.zeros(n)
     for iteration in range(iterations):
         new_centroids = np.zeros_like(centroids)
-        centroid_indexes = list(range(k))
+        centroid_indexes = set(range(k))
         category_count = np.zeros((k, 1))
 
         for i, datum in enumerate(X):
@@ -45,14 +45,10 @@ def kmeans(X, k, iterations=1000):
             cluster_labels[i] = label
             new_centroids[label] += datum
             category_count[label] += 1
-            try:
-                centroid_indexes.remove(label)
-            except ValueError:
-                pass
+            centroid_indexes.discard(label)
         new_centroids /= category_count
-        new_centroids[centroid_indexes] = np.random.uniform(
+        new_centroids[list(centroid_indexes)] = np.random.uniform(
             minimums, maximums, (len(centroid_indexes), d))
-
         if np.all(new_centroids == centroids):
             break
         else:
