@@ -28,18 +28,19 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
             len(X.shape) != 2 or
             type(kmin) is not int or
             kmin < 1 or
-            type(kmax) is not int or
-            kmax < 1 or
             type(iterations) is not int or
             iterations < 1
             ):
         return (None, None)
 
-    results = []
-    variance_difference = []
-
     if kmax is None:
         kmax = X.shape[0]
+
+    if type(kmax) is not int or kmax < 1 or kmax <= kmin:
+        return (None, None)
+
+    results = []
+    variance_difference = []
     for k in range(kmin, kmax + 1):
         centroids_labels = kmeans(X, k, iterations)
         results.append(centroids_labels)
