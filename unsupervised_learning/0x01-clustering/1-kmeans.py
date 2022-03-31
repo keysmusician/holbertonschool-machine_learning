@@ -59,4 +59,6 @@ def kmeans(X, k, iterations=1000):
         else:
             centroids = new_centroids
 
+    distances = np.linalg.norm(centered_points, axis=2)
+    cluster_labels = np.argmin(distances, axis=0)
     return (centroids, cluster_labels)
