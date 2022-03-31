@@ -38,25 +38,26 @@ def kmeans(X, k, iterations=1000):
     centroids = np.random.uniform(minimums, maximums, (k, d))
 
     for iteration in range(iterations):
+        prev_centroids = np.copy(centroids)
         centered_points = centroids[:, np.newaxis] - X
         distances = np.linalg.norm(centered_points, axis=2)
         cluster_labels = np.argmin(distances, axis=0)
         cluster_sizes = np.bincount(cluster_labels, minlength=k)
-        mask = np.indices(centered_points.shape)[0] == \
-            cluster_labels[:, np.newaxis]
-        new_centroids = np.sum(X * mask, axis=1) / \
-            np.where(
-                cluster_sizes[:, np.newaxis] == 0,
-                1,
-                cluster_sizes[:, np.newaxis]
-            )
+
         empty_clusters = np.where(cluster_sizes == 0)
-        new_centroids[empty_clusters] = np.random.uniform(
+        nonempty_clusters = np.nonzero(cluster_sizes)[0]
+        centroids[empty_clusters] = np.random.uniform(
             minimums, maximums, (len(empty_clusters), d))
 
-        if np.all(new_centroids == centroids):
+        mask = np.indices(centered_points.shape)[0] == \
+            cluster_labels[:, np.newaxis]
+
+        centroids[nonempty_clusters] = (
+            np.sum(X * mask, axis=1)[nonempty_clusters] /
+            cluster_sizes[:, np.newaxis][nonempty_clusters]
+        )
+
+        if np.array_equal(centroids, prev_centroids):
             break
-        else:
-            centroids = new_centroids
 
     return (centroids, cluster_labels)
