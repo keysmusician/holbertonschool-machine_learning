@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Defines `initialize`. """
+""" Defines `pdf`. """
 import numpy as np
 
 
@@ -20,19 +20,29 @@ def pdf(X, m, S):
     if type(X) is not np.ndarray or len(X.shape) != 2:
         return
     n, d = X.shape
-    if type(m) is not np.ndarray or \
-            len(m.shape) != 1 or \
-            d != m.shape[0] or \
-            type(S) is not np.ndarray or \
-            S.shape != (d, d):
-        return None
+    if (
+            type(m) is not np.ndarray or
+            len(m.shape) != 1 or
+            m.shape[0] != d or
+            type(S) is not np.ndarray or
+            S.shape != (d, d)
+            ):
+        return
 
     tau = 2 * np.pi
-    pdf = np.exp(
-        (X - m) @
-        np.linalg.inv(S) @
-        (X - m).T / -2) / \
-        np.sqrt(tau ** d * np.linalg.det(S))
+    normalization_constant = np.sqrt(tau ** d * np.linalg.det(S))
+    X_centered_transpose = (X - m).T
+    pdf = (
+        np.exp(
+            np.sum(
+                np.linalg.inv(S) @
+                X_centered_transpose *
+                X_centered_transpose,
+                axis=0
+            ) / -2
+        ) / normalization_constant
+    )
 
     tolerance = 1e-300
-    return np.extract(pdf * np.identity(n) > tolerance, pdf)
+
+    return np.where(pdf < tolerance, tolerance, pdf)
