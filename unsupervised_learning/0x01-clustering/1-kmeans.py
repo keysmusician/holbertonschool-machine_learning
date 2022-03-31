@@ -41,7 +41,7 @@ def kmeans(X, k, iterations=1000):
         centered_points = centroids[:, np.newaxis] - X
         distances = np.linalg.norm(centered_points, axis=2)
         cluster_labels = np.argmin(distances, axis=0)
-        cluster_sizes = np.bincount(cluster_labels)
+        cluster_sizes = np.bincount(cluster_labels, minlength=k)
         mask = np.indices(centered_points.shape)[0] == \
             cluster_labels[:, np.newaxis]
         new_centroids = np.sum(X * mask, axis=1) / \
@@ -59,6 +59,4 @@ def kmeans(X, k, iterations=1000):
         else:
             centroids = new_centroids
 
-    distances = np.linalg.norm(centered_points, axis=2)
-    cluster_labels = np.argmin(distances, axis=0)
     return (centroids, cluster_labels)
