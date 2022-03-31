@@ -3,7 +3,7 @@
 import numpy as np
 
 
-def kmeans(X, k, iterations=1000):
+def kmeans(X, cluster_count, iterations=1000):
     """
     Performs K-means on a dataset.
 
@@ -24,8 +24,8 @@ def kmeans(X, k, iterations=1000):
     if (
             type(X) is not np.ndarray or
             len(X.shape) != 2 or
-            type(k) is not int or
-            k < 1 or
+            type(cluster_count) is not int or
+            cluster_count < 1 or
             type(iterations) is not int or
             iterations < 1
             ):
@@ -35,29 +35,25 @@ def kmeans(X, k, iterations=1000):
 
     minimums = np.amin(X, axis=0)
     maximums = np.amax(X, axis=0)
-    centroids = np.random.uniform(minimums, maximums, (k, d))
+    centroids = np.random.uniform(minimums, maximums, (cluster_count, d))
 
     for iteration in range(iterations):
-        prev_centroids = np.copy(centroids)
-        centered_points = centroids[:, np.newaxis] - X
-        distances = np.linalg.norm(centered_points, axis=2)
+        previous_centroids = np.copy(centroids)
+        distances = np.linalg.norm(X - centroids[:, np.newaxis], axis=2)
         cluster_labels = np.argmin(distances, axis=0)
-        cluster_sizes = np.bincount(cluster_labels, minlength=k)
+        cluster_sizes = np.bincount(cluster_labels, minlength=cluster_count)
 
-        empty_clusters = np.where(cluster_sizes == 0)
-        nonempty_clusters = np.nonzero(cluster_sizes)[0]
-        centroids[empty_clusters] = np.random.uniform(
-            minimums, maximums, (len(empty_clusters), d))
-
-        mask = np.indices(centered_points.shape)[0] == \
-            cluster_labels[:, np.newaxis]
-
-        centroids[nonempty_clusters] = (
-            np.sum(X * mask, axis=1)[nonempty_clusters] /
-            cluster_sizes[:, np.newaxis][nonempty_clusters]
-        )
-
-        if np.array_equal(centroids, prev_centroids):
+        for cluster_index in range(cluster_count):
+            if cluster_sizes[cluster_index] == 0:
+                centroids[cluster_index] = np.random.uniform(
+                    minimums, maximums, (1, d))
+            else:
+                centroids[cluster_index] = np.mean(
+                    X[cluster_labels == cluster_index], axis=0)
+        if np.array_equal(previous_centroids, centroids):
             break
+
+    distances = np.linalg.norm(X - centroids[:, np.newaxis], axis=2)
+    cluster_labels = np.argmin(distances, axis=0)
 
     return (centroids, cluster_labels)
