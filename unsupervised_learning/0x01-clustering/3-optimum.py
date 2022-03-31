@@ -39,7 +39,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
     variance_difference = []
 
     if kmax is None:
-        kmax = 3
+        kmax = X.shape[0]
     for k in range(kmin, kmax + 1):
         centroids_labels = kmeans(X, k, iterations)
         results.append(centroids_labels)
