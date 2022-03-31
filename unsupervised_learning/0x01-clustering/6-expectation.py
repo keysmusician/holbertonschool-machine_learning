@@ -24,7 +24,8 @@ def expectation(X, pi, m, S):
             type(X) is not np.ndarray or
             len(X.shape) != 2 or
             type(pi) is not np.ndarray or
-            len(pi.shape) != 1
+            len(pi.shape) != 1 or
+            not np.isclose([np.sum(pi)], [1])[0]
             ):
         return (None, None)
     n, d = X.shape
