@@ -23,12 +23,16 @@ def maximization(X, g):
             type(X) is not np.ndarray or
             len(X.shape) != 2 or
             type(g) is not np.ndarray or
-            len(g.shape) != 2 or
-            g.shape[1] != X.shape[0]
+            len(g.shape) != 2
             ):
         return (None, None, None)
     n, d = X.shape
-    k = g.shape[0]
+    k, _gn = g.shape
+    if (
+            _gn != n or
+            not np.allclose(np.sum(g, axis=0), np.ones(n))
+            ):
+        return (None, None, None)
     g_sums = np.sum(g, axis=1, keepdims=True)
     centroids = g @ X / g_sums
     priors = g_sums / n
