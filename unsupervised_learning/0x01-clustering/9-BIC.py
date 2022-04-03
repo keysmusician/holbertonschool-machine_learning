@@ -43,8 +43,9 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
             kmin < 1
             ):
         return fail
+    sample_count, dimention_count = X.shape
     if kmax is None:
-        kmax = X.shape[0]
+        kmax = sample_count
     if (
             type(kmax) is not int or
             kmax < 1 or
@@ -57,19 +58,31 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
             ):
         return fail
 
-    n, d = X.shape
     results = []
     log_likelihoods = []
-    BIC = []
+    BICs = []
     for cluster_count in range(kmin, kmax + 1):
         priors, centroids, covariances, responsibilities, log_likelihood = \
             expectation_maximization(
                 X, cluster_count, iterations, tol, verbose)
         results.append((priors, centroids, covariances))
         log_likelihoods.append(log_likelihood)
-        BIC.append(-2 * log_likelihood + np.log(n) * cluster_count)
+        parameter_count = (
+            cluster_count * dimention_count ** 2 / 2 +
+            3 * cluster_count * dimention_count / 2 +
+            cluster_count -
+            1
+        )
+        BICs.append(
+             np.log(sample_count) * parameter_count - 2 * log_likelihood)
 
-    best_cluster_count = np.argmin(BIC)
-    best_parameters = results[best_cluster_count]
+    best_index = np.argmin(BICs)
+    best_cluster_count = kmin + best_index
+    best_parameters = results[best_index]
 
-    return (best_cluster_count, best_parameters, log_likelihoods, BIC)
+    return (
+        best_cluster_count,
+        best_parameters,
+        np.array(log_likelihoods),
+        np.array(BICs)
+    )
