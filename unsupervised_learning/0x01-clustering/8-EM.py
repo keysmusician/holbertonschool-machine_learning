@@ -45,19 +45,21 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
         return (None, ) * 5
     priors, centroids, covariances = initialize(X, k)
     previous_log_likelihood = 0
+    responsibilities, log_likelihood = expectation(
+        X, priors, centroids, covariances)
     for iteration in range(iterations):
-        responsibilities, log_likelihood = expectation(
-            X, priors, centroids, covariances)
+        previous_log_likelihood = log_likelihood
         if verbose and iteration % 10 == 0:
             print('Log Likelihood after {} iterations: {:.5f}'.format(
                 iteration, log_likelihood))
         priors, centroids, covariances = maximization(X, responsibilities)
+        responsibilities, log_likelihood = expectation(
+            X, priors, centroids, covariances)
         if abs(log_likelihood - previous_log_likelihood) <= tol:
             break
-        previous_log_likelihood = log_likelihood
 
     if verbose:
         print('Log Likelihood after {} iterations: {:.5f}'.format(
-            iteration, log_likelihood))
+            iteration + 1, log_likelihood))
 
     return (priors, centroids, covariances, responsibilities, log_likelihood)
