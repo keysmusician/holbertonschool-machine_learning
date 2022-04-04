@@ -68,10 +68,8 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
         results.append((priors, centroids, covariances))
         log_likelihoods.append(log_likelihood)
         parameter_count = (
-            cluster_count * dimention_count ** 2 / 2 +
-            3 * cluster_count * dimention_count / 2 +
-            cluster_count -
-            1
+            cluster_count * (dimention_count + 2) * (dimention_count + 1) / 2
+            - 1
         )
         BICs.append(
              np.log(sample_count) * parameter_count - 2 * log_likelihood)
