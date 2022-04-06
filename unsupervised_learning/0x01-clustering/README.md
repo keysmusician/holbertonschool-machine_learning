@@ -12,7 +12,7 @@
 * [Author](#author)
 
 ## About
-In this project, I learned about **clustering** methods such as **K-means.**
+In this project, I learned about **clustering** methods such as **K-means** and **Gaussian Mixture Models.**
 
 ## Files
 * `0-initialize.py`
