@@ -34,6 +34,11 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 
 ### Trimester 2:
 15. [0x05. Advanced Linear Algebra](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x05-advanced_linear_algebra)
+16. [0x06. Multivariate Probability](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x06-multivariate_prob)
+17. [0x00. Dimensionality Reduction](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x00-dimensionality_reduction)
+18. [0x07. Bayesian Probability](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x07-bayesian_prob)
+19. [0x01. Clustering](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x01-clustering)
+21. [0x02. Hidden Markov Models](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x02-hmm)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
