@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """ Defines `markov_chain` """
+import numpy as np
 
 
 def markov_chain(P, s, t=1):
