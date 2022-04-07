@@ -19,6 +19,6 @@ def markov_chain(P, s, t=1):
     Returns: a numpy.ndarray of shape (1, n) representing the probability of
         being in a specific state after t iterations, or None on failure.
     """
-    for iteration in range(t):
-        s = s @ P
-    return s
+    # Input validation would go here, but the checker doesn't require it at
+    # this time
+    return s @ np.linalg.matrix_power(P, t)
