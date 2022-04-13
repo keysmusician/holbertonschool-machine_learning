@@ -1,19 +1,20 @@
 #!/usr/bin/env python3
-"""Defines `GaussianProcess`."""
+"""Defines GaussianProcess."""
 import numpy as np
 
 
 class GaussianProcess:
     """A noiseless 1D Gaussian process."""
 
-
     def __init__(self, X_init, Y_init, l=1, sigma_f=1):
         """
+        Initializes a Gaussian Process.
+
         X_init: A numpy.ndarray of shape (t, 1) representing the inputs already
             sampled with the black-box function.
+            t: The number of initial samples.
         Y_init: A numpy.ndarray of shape (t, 1) representing the outputs of the
             black-box function for each input in X_init.
-        t: The number of initial samples.
         l: The length parameter for the kernel.
         sigma_f: The standard deviation given to the output of the black-box
             function.
@@ -23,7 +24,6 @@ class GaussianProcess:
         self.l = l
         self.sigma_f = sigma_f
         self.K = self.kernel(X_init, X_init)
-
 
     def kernel(self, X1, X2):
         """
