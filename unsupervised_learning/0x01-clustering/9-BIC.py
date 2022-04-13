@@ -1,3 +1,5 @@
+
+
 #!/usr/bin/env python3
 """Defines BIC"""
 import numpy as np
@@ -8,7 +10,6 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
     """
     Finds the best number of clusters for a GMM using the Bayesian Information
     Criterion.
-
     X: A numpy.ndarray of shape (n, d) containing the data set.
     kmin: A positive integer containing the minimum number of clusters to check
         for (inclusive).
@@ -19,7 +20,6 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
     tol: A non-negative float containing the tolerance for the EM algorithm.
     verbose: A boolean that determines if the EM algorithm should print
         information to the standard output.
-
     Returns: (best_k, best_result, l, b) on success, or (None, None, None,
         None) on failure:
         best_k: The best value for k based on its BIC.
