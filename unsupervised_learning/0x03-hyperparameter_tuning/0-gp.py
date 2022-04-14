@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Defines GaussianProcess."""
+"""Defines `GaussianProcess`."""
 import numpy as np
 
 
