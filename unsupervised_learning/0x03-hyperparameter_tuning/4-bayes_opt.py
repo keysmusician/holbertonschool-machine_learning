@@ -9,7 +9,7 @@ class BayesianOptimization:
     """Performs Bayesian optimization on a noiseless 1D Gaussian process."""
 
     def __init__(self, f, X_init, Y_init, bounds, ac_samples, l=1, sigma_f=1,
-            xsi=0.01, minimize=True):
+                 xsi=0.01, minimize=True):
         """
         Initializes a Bayesian optimizer.
 
@@ -49,11 +49,11 @@ class BayesianOptimization:
         """
         means, standard_deviations = self.gp.predict(self.X_s)
         if self.minimize:
-          best_sample = min(self.gp.Y)
-          improvement = best_sample - means - self.xsi
+            best_sample = min(self.gp.Y)
+            improvement = best_sample - means - self.xsi
         else:
-          best_sample = max(self.gp.Y)
-          improvement =  means - best_sample - self.xsi
+            best_sample = max(self.gp.Y)
+            improvement = means - best_sample - self.xsi
 
         with np.errstate(divide='ignore'):
             Z = improvement / standard_deviations

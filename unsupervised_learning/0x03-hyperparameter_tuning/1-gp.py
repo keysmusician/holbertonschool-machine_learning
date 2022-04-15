@@ -62,4 +62,3 @@ class GaussianProcess:
         sigma = self.kernel(X_s, X_s) - K_sT_K_inv @ K_s
 
         return (mu.flatten(), np.diag(sigma))
-
