@@ -19,7 +19,7 @@ def autoencoder(input_dims, hidden_layer_sizes, latent_dims):
         auto: The full autoencoder model.
     """
     # encoder
-    input_layer = keras.layers.Input(shape=(input_dims,))
+    input_layer = keras.Input((input_dims,))
     previous_layer = input_layer
     for node_count in hidden_layer_sizes:
         previous_layer = keras.layers.Dense(node_count, 'relu')(previous_layer)
@@ -28,7 +28,7 @@ def autoencoder(input_dims, hidden_layer_sizes, latent_dims):
     Encoder = keras.Model(input_layer, encoder_layers)
 
     # decoder
-    latent_space = keras.layers.Input(shape=(latent_dims,))
+    latent_space = keras.Input((latent_dims,))
     previous_layer = latent_space
     for node_count in reversed(hidden_layer_sizes):
         previous_layer = keras.layers.Dense(node_count, 'relu')(previous_layer)
