@@ -39,6 +39,9 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 18. [0x07. Bayesian Probability](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/math/0x07-bayesian_prob)
 19. [0x01. Clustering](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x01-clustering)
 21. [0x02. Hidden Markov Models](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x02-hmm)
+22. [0x03. Hyperparameter Tuning](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x03-hyperparameter_tuning)
+23. [0x04. Autoencoders](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x04-autoencoders)
+24. [0x0D. RNNs](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x0D-RNNs)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
