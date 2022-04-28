@@ -22,9 +22,9 @@ class LSTMCell:
         """
         Initializes an LSTMCell.
 
-        i: The dimensionality of the data.
-        h: The dimensionality of the hidden state.
-        o: The dimensionality of the outputs.
+        i: The number of input data features.
+        h: The number of hidden state features.
+        o: The number of output features.
         """
         # Weights and biases for the...
         # Forget gate:
