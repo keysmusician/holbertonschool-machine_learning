@@ -12,7 +12,7 @@
 * [Author](#author)
 
 ## About
-In this project, I learned about **recurrent neural networks (RNNs).**
+In this project, I learned how to build **recurrent neural networks (RNNs).**
 
 ## Files
 * `0-rnn_cell.py`
