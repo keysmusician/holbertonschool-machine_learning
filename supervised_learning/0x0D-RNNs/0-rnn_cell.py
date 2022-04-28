@@ -32,14 +32,16 @@ class RNNCell:
 
         Uses a softmax activation function.
 
-        x_t: T numpy.ndarray of shape (batches, steps) that contains the data
-            input for the cell.
-        h_prev: A numpy.ndarray of shape (batches, hidden_features)
+        x_t: T numpy.ndarray of shape (batch_size, input_feature_count) that
+            contains the input data for the cell.
+        h_prev: A numpy.ndarray of shape (batch_size, hidden_feature_count)
             containing the previous hidden state.
 
         Returns: (h_next, y):
-            h_next: The next hidden state of shape (batch, hidden_features).
-            y: The output of the cell of shape (batch, output_features).
+            h_next: The next hidden state of shape (batch_size,
+                hidden_feature_count).
+            y: The output of the cell of shape (batch_size,
+                output_feature_count).
         """
         # compute the new hidden state
         h_next = np.concatenate((h_prev, x_t), axis=1) @ self.Wh + self.bh
