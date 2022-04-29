@@ -3,7 +3,7 @@
 import tensorflow.keras as keras
 
 
-def autoencoder(input_dims, hidden_layers, latent_dims):
+def autoencoder(input_dims, hidden_layer_sizes, latent_dims):
     """
     Creates an autoencoder:
 
@@ -19,13 +19,13 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
         auto: The full autoencoder model.
     """
     # encoder
-    inputs = keras.Input(shape=(input_dims,))
-    h = keras.layers.Dense(hidden_layers[0], activation='relu')(inputs)
-    for i in range(1, len(hidden_layers)):
-        dims = hidden_layers[i]
-        h = keras.layers.Dense(dims, activation='relu')(h)
-    z_mean = keras.layers.Dense(latent_dims)(h)
-    z_log_sigma = keras.layers.Dense(latent_dims)(h)
+    inputs = keras.Input((input_dims,))
+    previous_layer = inputs
+    for node_count in hidden_layer_sizes:
+        previous_layer = keras.layers.Dense(node_count, 'relu')(previous_layer)
+
+    z_mean = keras.layers.Dense(latent_dims)(previous_layer)
+    z_log_sigma = keras.layers.Dense(latent_dims)(previous_layer)
 
     def sampling(args):
         """ samplig f'n for vae """
@@ -39,9 +39,9 @@ def autoencoder(input_dims, hidden_layers, latent_dims):
     encoder = keras.Model(inputs, [z_mean, z_log_sigma, z])
 
     dinputs = keras.Input(shape=(latent_dims,))
-    dh = keras.layers.Dense(hidden_layers[-1], activation='relu')(dinputs)
-    for i in range(len(hidden_layers) - 2, -1, -1):
-        dims = hidden_layers[i]
+    dh = keras.layers.Dense(hidden_layer_sizes[-1], activation='relu')(dinputs)
+    for i in range(len(hidden_layer_sizes) - 2, -1, -1):
+        dims = hidden_layer_sizes[i]
         dh = keras.layers.Dense(dims, activation='relu')(dh)
     decode = keras.layers.Dense(input_dims, activation='sigmoid')(dh)
 
