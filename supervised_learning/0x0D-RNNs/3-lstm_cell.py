@@ -49,12 +49,12 @@ class LSTMCell:
 
         The output layer uses a softmax activation function.
 
-        x_t: A numpy.ndarray of shape (batch_size, input_feature_count) that
-            contains the data input for the cell.
         h_prev: A numpy.ndarray of shape (batch_size, hidden_feature_count)
             containing the previous hidden state.
         c_prev: A numpy.ndarray of shape (batch_size, hidden_feature_count)
             containing the previous cell state.
+        x_t: A numpy.ndarray of shape (batch_size, input_feature_count) that
+            contains the data input for the cell.
 
         Returns: (h_next, c_next, y):
             h_next: The next hidden state.
