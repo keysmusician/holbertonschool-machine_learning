@@ -22,8 +22,6 @@ def pca(X, var=0.95):
     """
     U, Σ, VT = np.linalg.svd(X)
     Σ_percent = np.cumsum(Σ) / np.sum(Σ)
-    reduced_dimentionality = 0
-    while Σ_percent[reduced_dimentionality] < var:
-        reduced_dimentionality += 1
+    reduced_dimentions = np.asscalar(np.argwhere(Σ_percent > var)[0]) + 1
 
-    return VT.T[:, :reduced_dimentionality + 1]
+    return VT[:reduced_dimentions].T
