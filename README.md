@@ -42,15 +42,16 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 22. [0x03. Hyperparameter Tuning](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x03-hyperparameter_tuning)
 23. [0x04. Autoencoders](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x04-autoencoders)
 24. [0x0D. RNNs](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x0D-RNNs)
+25. [0x0E. Time Series Forecasting](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x0E-time_series)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
 <pre align="center">
-      _   _       _   _   _       _   _       _   _   _
-     ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___
-     /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
-   /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / /
- /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /
-|___|___|___|___|___|___|___|___|___|___|___|___|___|___|/
+        _   _       _   _   _       _   _       _   _   _     
+    ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___ 
+   /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
+  /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / / 
+ /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /  
+ |___|___|___|___|___|___|___|___|___|___|___|___|___|___|/   
 </pre>
 <p><span style="font-family: 'Lucida Console'; line-height: 14px; font-size: 14px; display: inline-block;">&nbsp;</span></p>
