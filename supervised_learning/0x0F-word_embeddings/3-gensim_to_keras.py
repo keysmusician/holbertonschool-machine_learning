@@ -10,4 +10,4 @@ def gensim_to_keras(model):
 
     Returns: The trainable Keras Embedding.
     """
-    return model.wv.get_keras_embedding()
+    return model.wv.get_keras_embedding(True)
