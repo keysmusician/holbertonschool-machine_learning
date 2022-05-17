@@ -43,6 +43,9 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 23. [0x04. Autoencoders](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/unsupervised_learning/0x04-autoencoders)
 24. [0x0D. RNNs](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x0D-RNNs)
 25. [0x0E. Time Series Forecasting](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x0E-time_series)
+26. [0x0F. Natural Language Processing - Word Embeddings](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x0F-word_embeddings)
+27. [0x10. Natural Language Processing - Evaluation Metrics](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x10-nlp_metrics)
+28. [0x11. Attention](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x11-attention)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
