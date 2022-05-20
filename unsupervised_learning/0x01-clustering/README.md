@@ -12,7 +12,7 @@
 * [Author](#author)
 
 ## About
-In this project, I learned about **clustering** methods such as **K-means** and **Gaussian Mixture Models.**
+In this project, I learned about **clustering** methods such as **K-means** and **Gaussian mixture models.**
 
 ## Files
 * `0-initialize.py`
@@ -33,11 +33,12 @@ In this project, I learned about **clustering** methods such as **K-means** and 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
 <pre align="center">
-      _   _       _   _   _       _   _       _   _   _
-     ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___
-     /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
-   /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / /
- /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /
-|___|___|___|___|___|___|___|___|___|___|___|___|___|___|/
+        _   _       _   _   _       _   _       _   _   _     
+    ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___ 
+   /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
+  /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / / 
+ /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /  
+ |___|___|___|___|___|___|___|___|___|___|___|___|___|___|/   
+ 
 </pre>
 <p><span style="font-family: 'Lucida Console'; line-height: 14px; font-size: 14px; display: inline-block;">&nbsp;</span></p>

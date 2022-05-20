@@ -13,7 +13,7 @@
 
 ## About
 In this project, I learned about **joint probability distributions,
-covariance, covariance matricies, and multivariate gaussian distrbutions.**
+covariance, covariance matrices, and multivariate Gaussian distributions.**
 
 ## Files
 * `0-mean_cov.py`
@@ -24,11 +24,12 @@ covariance, covariance matricies, and multivariate gaussian distrbutions.**
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
 <pre align="center">
-            _   _       _   _   _       _   _       _   _   _
-     ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___
-     /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
-   /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / /
- /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /
-|___|___|___|___|___|___|___|___|___|___|___|___|___|___|/
+        _   _       _   _   _       _   _       _   _   _     
+    ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___ 
+   /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
+  /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / / 
+ /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /  
+ |___|___|___|___|___|___|___|___|___|___|___|___|___|___|/   
+ 
 </pre>
 <p><span style="font-family: 'Lucida Console'; line-height: 14px; font-size: 14px; display: inline-block;">&nbsp;</span></p>

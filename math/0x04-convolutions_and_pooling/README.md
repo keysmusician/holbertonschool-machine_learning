@@ -12,8 +12,8 @@
 * [Author](#author)
 
 ## About
-In this project, I learned how to perform covolution (cross-correlation) and
-pooling
+In this project, I learned how to perform **convolution** (cross-correlation) and
+**pooling.**
 
 ## Files
 * `0-convolve_grayscale_valid.py`
@@ -28,11 +28,12 @@ pooling
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
 <pre align="center">
-      _   _       _   _   _       _   _       _   _   _
-     ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___
-     /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
-   /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / /
- /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /
-|___|___|___|___|___|___|___|___|___|___|___|___|___|___|/
+        _   _       _   _   _       _   _       _   _   _     
+    ___//|_//|_____//|_//|_//|_____//|_//|_____//|_//|_//|___ 
+   /  /// ///  /  /// /// ///  /  /// ///  /  /// /// ///  / |
+  /  ||/ ||/  /  ||/ ||/ ||/  /  ||/ ||/  /  ||/ ||/ ||/  / / 
+ /___/___/___/___/___/___/___/___/___/___/___/___/___/___/ /  
+ |___|___|___|___|___|___|___|___|___|___|___|___|___|___|/   
+ 
 </pre>
 <p><span style="font-family: 'Lucida Console'; line-height: 14px; font-size: 14px; display: inline-block;">&nbsp;</span></p>
