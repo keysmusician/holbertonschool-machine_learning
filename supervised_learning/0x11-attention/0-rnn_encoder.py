@@ -8,7 +8,7 @@ class RNNEncoder(tf.keras.layers.Layer):
 
     def __init__(self, vocab, embedding, units, batch):
         """
-        Initializes an RNN encoder.
+        Initializes an RNN encoder layer.
 
         vocab: An integer representing the size of the input vocabulary.
         embedding: An integer representing the dimensionality of the embedding
