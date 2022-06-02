@@ -42,19 +42,20 @@ class SelfAttention(tf.keras.layers.Layer):
         # alignment scores & weights shape =
         # (batch_size/sentence_count, 1 [expanded dimension], word/token_count)
 
+        s_prev_expanded = tf.expand_dims(s_prev, 1)
+
         # The alignment model:
         alignment_scores = self.V(
-            tf.nn.tanh(self.W(s_prev)[:, tf.newaxis] + self.U(hidden_states)))
-
+            tf.nn.tanh(self.W(s_prev_expanded) + self.U(hidden_states)))
         alignment_weights = tf.nn.softmax(alignment_scores, axis=1)
 
         # Calculate the context vector (aka the expected annotation).
         # Swap alignment_weights axis 1 (added for broadcasting agreement) with
         # axis 2 (words/tokens), then matrix multiply. Finally, remove the
         # expanded dimension that was added for broadcasting:
-        # context_vector = (
+        # context_vector = tf.squeeze(
         #   tf.transpose(alignment_weights, [0, 2, 1]) @ hidden_states
-        # )[:, 0]
+        # )
 
         # Simpler calculation:
         context_vector = tf.reduce_sum(
