@@ -57,14 +57,14 @@ class Dataset:
         """
         token_IDs = []
         for language_tensor, tokenizer in [
-            (en, self.tokenizer_en),
-            (pt, self.tokenizer_pt)
+            (pt, self.tokenizer_pt),
+            (en, self.tokenizer_en)
         ]:
             SENTENCE_START = tokenizer.vocab_size
             SENTENCE_END = SENTENCE_START + 1
             token_IDs.append(
                 [SENTENCE_START] +
-                self.tokenizer_pt.encode(language_tensor.numpy()) +
+                tokenizer.encode(language_tensor.numpy()) +
                 [SENTENCE_END]
             )
 
