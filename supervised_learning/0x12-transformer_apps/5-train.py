@@ -65,6 +65,7 @@ def train_transformer(N, dm, h, hidden, max_len, batch_size, epochs):
         from_logits=True, reduction='none')
 
     def loss_function(real, pred):
+        """ Calculates the loss of a prediction. """
         mask = tf.math.logical_not(tf.math.equal(real, 0))
         loss_ = loss(real, pred)
 
@@ -74,6 +75,7 @@ def train_transformer(N, dm, h, hidden, max_len, batch_size, epochs):
         return tf.reduce_sum(loss_) / tf.reduce_sum(mask)
 
     def accuracy_function(real, pred):
+        """ Calculates the accuracy of the model. """
         accuracies = tf.equal(real, tf.argmax(pred, axis=2))
 
         mask = tf.math.logical_not(tf.math.equal(real, 0))
@@ -88,6 +90,7 @@ def train_transformer(N, dm, h, hidden, max_len, batch_size, epochs):
 
     # Custom training procedure
     def train_step(inputs, targets):
+        """ Trains the model on a single batch. """
         tar_inp = targets[:, :-1]
         tar_real = targets[:, 1:]
 
