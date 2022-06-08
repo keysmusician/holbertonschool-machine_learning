@@ -60,7 +60,8 @@ class MultiHeadAttention(tf.keras.layers.Layer):
                 perm=[0, 2, 1, 3]
             )
 
-        attention_scores, weights = sdp_attention(*attention_parameters, mask)
+        Q, K, V = attention_parameters
+        attention_scores, weights = sdp_attention(Q, K, V, mask)
         # Un-swap the heads & tokens axes
         attention_scores = tf.transpose(attention_scores, perm=[0, 2, 1, 3])
         # And merge the heads back into a single features axis
