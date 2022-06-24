@@ -25,8 +25,6 @@ def train(
         Q_table: The updated Q-table.
         episode_rewards: A list containing the rewards per episode.
     """
-    MAX_EPSILON = 1
-
     all_episodes_returns = []
 
     for episode in range(episodes):

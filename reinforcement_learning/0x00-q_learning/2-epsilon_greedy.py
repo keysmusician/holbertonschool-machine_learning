@@ -20,5 +20,5 @@ def epsilon_greedy(Q_table, state, epsilon):
         return np.argmax(Q_table[state])
     else:
         # Explore
-        action_count = Q_table.shape[1]
-        return np.random.randint(action_count)
+        # Q_table.shape[1] is the number of possible actions
+        return np.random.randint(Q_table.shape[1])

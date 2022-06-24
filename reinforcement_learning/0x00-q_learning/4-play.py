@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """ Defines `play`. """
-import gym
 import numpy as np
 
 
@@ -16,22 +15,18 @@ def play(env, Q_table, max_steps=100):
     """
     # Each state of the board should be displayed via the console
     # You should always exploit the Q-table
-    assert isinstance(env, gym.Env)
-
     state = env.reset()
-    total_reward = 0
 
     for _step in range(max_steps):
-        print(env.render(mode='ansi'))
+        print(env.render(mode='ansi'), end='')
 
         action = np.argmax(Q_table[state])
 
         state, reward, done, _info = env.step(action)
 
-        total_reward += reward
-
         if done:
-            print(env.render(mode='ansi'))
             break
 
-    return total_reward
+    print(env.render(mode='ansi'), end='')
+
+    return reward
