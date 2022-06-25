@@ -25,6 +25,8 @@ def train(
         Q_table: The updated Q-table.
         episode_rewards: A list containing the rewards per episode.
     """
+    max_epsilon = epsilon
+
     all_episodes_returns = []
 
     for episode in range(episodes):
@@ -56,7 +58,7 @@ def train(
             if done:
                 break
 
-        epsilon = min_epsilon + (epsilon - min_epsilon) * np.exp(
+        epsilon = min_epsilon + (max_epsilon - min_epsilon) * np.exp(
             -epsilon_decay * episode)
 
         all_episodes_returns.append(episode_return)
