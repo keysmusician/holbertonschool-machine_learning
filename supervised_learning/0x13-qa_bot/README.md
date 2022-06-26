@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x00. Q-learning
+# 0x13. QA Bot
 
 ## Table of Contents
 * [About](#about)
@@ -12,14 +12,17 @@
 * [Author](#author)
 
 ## About
-In this project, I learned about **Q-learning** using `gym`.
+In this project, I built a **QA bot** using the following libraries:
+* Tensorflow
+* Tensorflow Hub
+* Transformers
 
 ## Files
-* `0-load_env.py`
-* `1-q_init.py`
-* `2-epsilon_greedy.py`
-* `3-q_learning.py`
-* `4-play.py`
+* `0-qa.py`
+* `1-loop.py`
+* `2-qa.py`
+* `3-semantic_search.py`
+* `4-qa.py`
 * `README.md`
 
 ## Author
