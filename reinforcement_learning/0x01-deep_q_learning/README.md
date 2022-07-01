@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x00. Q-learning
+# 0x01. Deep Q-learning
 
 ## Table of Contents
 * [About](#about)
@@ -12,14 +12,11 @@
 * [Author](#author)
 
 ## About
-In this project, I learned about **Q-learning** using `gym`.
+In this project, I learned about **Deep Q-learning** by training a **Deep Q-Network** (DQN) to play Atari’s "Breakout".
 
 ## Files
-* `0-load_env.py`
-* `1-q_init.py`
-* `2-epsilon_greedy.py`
-* `3-q_learning.py`
-* `4-play.py`
+* `train.py`
+* `play.py`
 * `README.md`
 
 ## Author
