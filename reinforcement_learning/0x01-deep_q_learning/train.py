@@ -2,30 +2,29 @@
 """ Trains a Deep Q-Network (DQN) to play Atari's "Breakout." """
 import gym
 from keras import layers, models, optimizers
-from rl import agents, memory
-import os
-
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
+from rl import agents, memory, policy
 
 total_training_steps = 10_000
 
-memory_limit = 1_000_000
+memory_limit = 100_000
 
 game_environment = gym.make(
     "ALE/Breakout-v5",
     disable_env_checker=True,
     obs_type='grayscale',
-    render_mode='human',
+    #render_mode='human',
 )
 
-# The number of actions available to take in the game
+# The number of actions available to take in the game:
 action_count = game_environment.action_space.n
-# The resolution of the game screen in pixels
+# The resolution of the game screen in pixels:
 game_x_resolution, game_y_resolution = game_environment.observation_space.shape
-# The number of color channels (only used with "rbg" observation type)
+# The number of color channels (only used with "rbg" observation type):
 # color_channels = 3
+# The number of frames in an input window:
+frames = 4
 
-input_shape = (action_count, game_x_resolution, game_y_resolution)
+input_shape = (frames, game_x_resolution, game_y_resolution)
 
 model = models.Sequential([
     layers.Input(shape=input_shape),
@@ -41,12 +40,13 @@ model = models.Sequential([
 ])
 
 agent = agents.DQNAgent(
-    model=model,
+    model=model, # This works with keras-rl2 & TF2
     nb_actions=action_count,
-    memory=memory.SequentialMemory(memory_limit, window_length=action_count)
+    policy=policy.EpsGreedyQPolicy(),
+    memory=memory.SequentialMemory(memory_limit, window_length=frames)
 )
 
-agent.compile(optimizers.Adam())
+agent.compile(optimizers.Adam(learning_rate=0.00025, clipnorm=1))
 
 if __name__ == '__main__':
 

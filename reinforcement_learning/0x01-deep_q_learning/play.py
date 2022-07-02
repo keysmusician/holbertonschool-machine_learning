@@ -7,12 +7,12 @@ agent.load_weights('policy.h5')
 
 episodes = 3
 
-max_episode_steps = 10_0
+max_episode_steps = 10_000
 
-for episode in range(episodes):
+for _ in range(episodes):
     state = game_environment.reset()
 
-    for step in range(max_episode_steps):
+    for _ in range(max_episode_steps):
         action = agent.forward(state)
         state, _, done, _ = game_environment.step(action)
 
