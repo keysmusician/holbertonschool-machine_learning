@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-""" Defines `monte_carlo`. """
+"""
+Defines `monte_carlo`.
+
+Follows the algorithm shown in:
+
+Reinforcement Learning: An Introduction (Second Edition)
+By Richard S. Sutton and Andrew G. Barto
+Page 92
+
+http://incompleteideas.net/book/RLbook2020.pdf#page=114
+"""
 from collections import Counter
 
 
@@ -22,7 +32,7 @@ def monte_carlo(
     Returns: The updated value function estimate.
     """
     # The returns for each encountered state across all episodes
-    all_state_returns = {
+    states_returns = {
         state: [] for state in range(environment.observation_space.n)}
 
     for _ in range(episodes):
@@ -57,12 +67,13 @@ def monte_carlo(
             # If this is the first visit to the state
             if state_visitation_counts[state] == 1:
                 # The average return across episodes from the state
-                state_returns = all_state_returns[state]
+                state_returns = states_returns[state]
 
                 state_returns.append(Return)
 
-                # The updated state value is the average return for that state
-                V[state] = sum(state_returns) / len(state_returns)
+                # The updated state value is the average return across episodes
+                # for that state
+                V[state] = α * sum(state_returns) / len(state_returns)
 
             state_visitation_counts[state] -= 1
 
