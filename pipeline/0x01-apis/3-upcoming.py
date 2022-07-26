@@ -10,24 +10,24 @@ if __name__ == '__main__':
     response = requests.get(base_URL + 'v5/launches/latest')
 
     if response.ok:
-        response_JSON = response.json()
+        latest_launch = response.json()
 
         launch_name, date, rocket_ID, launchpad_ID = (
-            response_JSON['name'],
-            response_JSON['date_local'],
-            response_JSON['rocket'],
-            response_JSON['launchpad'],
+            latest_launch['name'],
+            latest_launch['date_local'],
+            latest_launch['rocket'],
+            latest_launch['launchpad'],
         )
 
         rocket_name = requests.get(
             base_URL + 'v4/rockets/' + rocket_ID).json()['name']
 
-        response_JSON = requests.get(
+        launchpad = requests.get(
             base_URL + 'v4/launchpads/' + launchpad_ID).json()
 
         launchpad_name, launchpad_locality = (
-            response_JSON['name'],
-            response_JSON['locality']
+            launchpad['name'],
+            launchpad['locality']
         )
 
         print('{} ({}) {} - {} ({})'.format(
