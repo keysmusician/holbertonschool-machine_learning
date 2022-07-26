@@ -9,7 +9,7 @@ def sentientPlanets():
     """
     SWAPI_URL = 'https://swapi-api.hbtn.io/api/species/'
 
-    sentient_host_planets = set()
+    sentient_host_planets = []
 
     response = requests.get(SWAPI_URL)
     while (response.ok):
@@ -17,20 +17,18 @@ def sentientPlanets():
         for species in response_JSON.get('results', []):
             if 'sentient' in (
                 species.get('designation'),
-                species['classification']
+                species.get('classification')
             ):
+                # Get and append homeworld name
                 try:
-                    sentient_host_planets.add(
+                    sentient_host_planets.append(
                         requests.get(species.get('homeworld')).json()['name'])
-                except (
-                    requests.exceptions.MissingSchema,
-                    requests.JSONDecodeError
-                ):
+                except requests.exceptions.MissingSchema:
                     continue
 
         next_page = response_JSON.get('next')
 
-        if next_page is None:
+        if next_page is None or not next_page:
             break
 
         response = requests.get(next_page)
