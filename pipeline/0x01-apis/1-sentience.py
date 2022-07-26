@@ -17,12 +17,16 @@ def sentientPlanets():
         for species in response_JSON.get('results', []):
             if species.get('designation') == 'sentient':
                 try:
+                    if requests.get(species.get('homeworld')).json()['name'] == 'Rodia':
+                        print('Rodia')
                     sentient_host_planets.add(
                         requests.get(species.get('homeworld')).json()['name'])
                 except (
                     requests.exceptions.MissingSchema,
                     requests.JSONDecodeError
-                ):
+                ) as error:
+                    print(species)
+                    print(error)
                     continue
 
         next_page = response_JSON.get('next')
