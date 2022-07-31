@@ -55,7 +55,6 @@ I sharpened my SQL skills and learned MongoDB in this project.
 * `32-update_topics.py`
 * `33-schools_by_topic.py`
 * `34-log_stats.py`
-* `setup.sql`
 * `README.md`
 
 ## Author
