@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x00. Q-learning
+# 0x00. Pandas
 
 ## Table of Contents
 * [About](#about)
@@ -12,7 +12,7 @@
 * [Author](#author)
 
 ## About
-In this project, I learned about **Pandas**.
+In this project, I practiced using the Python library **Pandas**.
 
 ## Files
 * `0-from_numpy.py`

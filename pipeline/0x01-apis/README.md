@@ -4,7 +4,7 @@
   </a>
 </p>
 
-# 0x00. Q-learning
+# 0x01. Data Collection - APIs
 
 ## Table of Contents
 * [About](#about)
@@ -12,24 +12,14 @@
 * [Author](#author)
 
 ## About
-In this project, I learned about **Pandas**.
+This project gave me extra practice with APIs.
 
 ## Files
-* `0-from_numpy.py`
-* `1-from_dictionary.py`
-* `2-from_file.py`
-* `3-rename.py`
-* `4-array.py`
-* `5-slice.py`
-* `6-flip_switch.py`
-* `7-high.py`
-* `8-prune.py`
-* `9-fill.py`
-* `10-index.py`
-* `11-concat.py`
-* `12-hierarchy.py`
-* `13-analyze.py`
-* `14-visualize.py`
+* `0-passengers.py`
+* `1-sentience.py`
+* `2-user_location.py`
+* `3-upcoming.py`
+* `4-rocket_frequency.py`
 * `README.md`
 
 ## Author
