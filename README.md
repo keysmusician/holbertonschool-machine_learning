@@ -46,6 +46,21 @@ These are the **Machine Learning** projects in Holberton School's ML specializat
 26. [0x0F. Natural Language Processing - Word Embeddings](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x0F-word_embeddings)
 27. [0x10. Natural Language Processing - Evaluation Metrics](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x10-nlp_metrics)
 28. [0x11. Attention](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x11-attention)
+29. [0x12. Transformer Applications](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x12-transformer_apps)
+30. [0x13. QA Bot](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/supervised_learning/0x13-qa_bot)
+
+### Trimester 3:
+31. [0x00. Q-learning](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/reinforcement_learning/0x00-q_learning)
+32. [0x01. Deep Q-learning](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/reinforcement_learning/0x01-deep_q_learning)
+33. [0x02. Temporal Difference](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/reinforcement_learning/0x02-temporal_difference)
+34. [0x03. Policy Gradients]()
+35. [0x00. Pandas](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/pipeline/0x00-pandas)
+36. [0x01. Data Collection - APIs](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/pipeline/0x01-apis)
+37. [0x02. Databases](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/pipeline/0x02-databases)
+38. [0x03. Data Preprocessing]()
+39. [0x04. Data Augmentation](https://github.com/keysmusician/holbertonschool-machine_learning/tree/main/pipeline/0x04-data_augmentation)
+40. [0x05. ML Life Cycle]()
+41. [ML - Portfolio Project](https://github.com/keysmusician/MockingBot)
 
 ## Author
 Justin Masayda [@keysmusician](https://github.com/keysmusician)
