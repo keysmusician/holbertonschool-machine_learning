@@ -1,0 +1,3 @@
+[submodule "MockingBot"]
+	path = MockingBot
+	url = https://github.com/keysmusician/MockingBot
